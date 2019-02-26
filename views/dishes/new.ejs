@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>    
+<h1>New Dish</h1>
+    <div class="addNewDish">
+        <form action="/dishes" method="POST">
+            <!-- l -->
+            <label>Picture:</label>
+            <input type="text" name="picture" ><!-- required --><br>
+            <label>Description:</label>
+            <input type="text" name="description" ><!-- required --><br>
+            <label>Type:</label>
+            <input type="text" name="type" ><!-- required --><br>
+            <label>Price:</label>
+            <input type="number" name="price"  ><!-- required --><br>
+            <label>Availability starts:</label>
+            <input type="date" name="availability_start_date" ><!-- required --><br>
+            <input type="time" name="availability_start_time" ><!-- required --><br>
+            <label>Availability ends:</label>
+            <input type="date" name="availability_end_date" ><!-- required --><br>
+            <input type="time" name="availability_end_time" ><!-- required --><br>
+            <label>Total Portions:</label>
+            <input type="number" name="totalPortions" ><!-- required --><br>
+            <label>Cooker ID:</label>
+            <input type="text" name="user_id" ><!-- required --><br>
+            <input id="addDishButton" type="submit" value="Add Dish">
+        </form>
+    </div>
+<%- include('../partials/footer') %>

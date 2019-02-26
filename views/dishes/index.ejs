@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>    
+<h1>All Dishes</h1>
+    <div class="allDishes">
+        <% if (dishes.length > 0) { %>
+            <% dishes.forEach(function(dish) { %>
+                <label>Picture:</label>
+                <label><%= dish.picture %></label><br>
+                <label>Description:</label>
+                <label><%= dish.description %></label><br>
+                <label>Type:</label>
+                <label><%= dish.type %></label><br>
+                <label>Price:</label>
+                <label><%= dish.price %></label><br>
+                <label>Availability starts:</label>
+                <label><%= dish.availability_start %></label><br>
+                <label>Availability ends:</label>
+                <label><%= dish.availability_end %></label><br>
+                <label>Total Portions:</label>
+                <label><%= dish.totalPortions %></label><br>
+                <label>cooker_id:</label>
+                <label><%= dish.user_id %></label><br>
+                <a href="/dishes/<%=dish._id %>"> details</a>
+                <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                <br><br>
+            <% }); %>
+        <% } else { %>
+            <h1>No dishes published yet...</h1>
+        <% } %>
+        <a href="/dishes/new"> new</a>
+    </div>
+<%- include('../partials/footer') %>

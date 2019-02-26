@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>    
+<h1>Delete Dish</h1>
+    <div class="deleteDish">
+        <form method="POST" action="/dishes/<%= dish._id %>?_method=DELETE">
+            <label>Picture:</label>
+            <label><%= dish.picture %></label><br>
+            <label>Description:</label>
+            <label><%= dish.description %></label><br>
+            <label>Type:</label>
+            <label><%= dish.type %></label><br>
+            <label>Price:</label>
+            <label><%= dish.price %></label><br>
+            <label>Availability starts:</label>
+            <label><%= dish.availability_start_date %></label><br>
+            <label><%= dish.availability_start_time %></label><br>
+            <label>Availability ends:</label>
+            <label><%= dish.availability_end_date %></label><br>
+            <label><%= dish.availability_end_time %></label><br>
+            <label>Total Portions:</label>
+            <label><%= dish.totalPortions %></label><br>
+            <label>cooker_id:</label>
+            <label><%= dish.user_id %></label><br>
+            <input id="deleteDishButton" type="submit" value="Delete Dish">
+        </form>
+    </div>
+<%- include('../partials/footer') %>
