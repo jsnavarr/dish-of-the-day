@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>    
+<h1>All Orders</h1>
+    <div class="allOrders">
+        <% if (orders.length > 0) { %>
+            <% orders.forEach(function(o, idx) { %>
+                <label>Quantity:</label>
+                <label><%= o.quantity %></label><br>
+                <label>Pickup time:</label>
+                <label><%= pickup_times[idx] %></label><br>
+                <label>Allergies:</label>
+                <label><%= o.allergies %></label><br>
+
+                <a href="/orders/<%=o._id %>"> details</a>
+                <a href="/orders/<%=o._id %>/edit"> edit</a>
+                <a href="/orders/<%=o._id %>/delete"> delete</a>
+                <br><br>
+            <% }); %>
+        <% } else { %>
+            <h1>No orders yet...</h1>
+        <% } %>
+        <a href="/dishes/"
+    </div>
+<%- include('../partials/footer') %>

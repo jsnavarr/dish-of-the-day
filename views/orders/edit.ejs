@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>    
+<h1>Edit Order</h1>
+    <%- include('../partials/dish') %>
+    <div class="editOrder">
+        <form action="/orders/<%= order._id %>" method="POST">
+            <label>Quantity:</label>
+            <input type="number" name="quantity" value="<%= order.quantity %>" ><br>
+            <label>Pickup time:</label>
+            <input type="datetime-local" name="pickup_time" value="<%= pickup_time %>" ><br>
+            <label>Allergies:</label>
+            <input type="text" name="allergies" value="<%= order.allergies %>" ><br>
+            <input id="editOrderButton" type="submit" value="Save Order">
+        </form>
+            <a href="/orders"> Cancel</a>
+    </div>
+<%- include('../partials/footer') %>

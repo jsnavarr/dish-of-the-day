@@ -1,0 +1,14 @@
+<% if(dish.picture){ %>
+    <img src="<%= dish.picture %>" height="150" width="150"><br>
+<% } else { %>
+    <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
+<% } %>
+<label><%= dish.description %></label><br>
+<label>Type:</label>
+<label><%= dish.type %></label><br>
+<label>Price: $</label>
+<label><%= dish.price %></label><br>
+<label>Availability starts:</label>
+<label><%= av_date_s %></label><br>
+<label>Availability ends:</label>
+<label><%= av_date_e %></label><br><br>

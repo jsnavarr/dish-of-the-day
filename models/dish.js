@@ -34,22 +34,14 @@ var commentSchema = new Schema({
         min: 1,
         // required: true
     },
-    availability_start_date: {
-        type: String,
-        // default: new Date(),
-        required: true
-    },
-    availability_start_time: {
-        type: String,
-        required: true
-    },
-    availability_end_date: {
+    availability_start: {
         type: Date,
         // default: new Date(),
-        // required: true
+        required: true
     },
-    availability_end_time: {
-        type: String,
+    availability_end: {
+        type: Date,
+        // default: new Date(),
         // required: true
     },
     totalPortions: {

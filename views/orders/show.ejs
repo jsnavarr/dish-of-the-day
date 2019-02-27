@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>    
+<h1>All Orders</h1>
+    <div class="Order details">
+        <%- include('../partials/dish') %>
+        <label>Quantity:</label>
+        <label><%= order.quantity %></label><br>
+        <label>Pickup time:</label>
+        <label><%= pickup_time %></label><br>
+        <label>Allergies:</label>
+        <label><%= order.allergies %></label><br>
+
+        <a href="/orders/<%=order._id %>"> details</a>
+        <a href="/orders/<%=order._id %>/edit"> edit</a>
+        <a href="/orders/<%=order._id %>/delete"> delete</a>
+        <a href="/dishes/<%=order.dish_id %>"> Go to Dish</a>
+    </div>
+<%- include('../partials/footer') %>

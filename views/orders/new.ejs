@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>  
+<h1>New Order</h1>
+    <div class="newOrder">
+        <form action="/dishes/<%= dish_id %>/orders" method="POST">
+            <%- include('../partials/dish') %>
+            <label>Quantity:</label>
+            <input type="number" name="quantity" ><br>
+            <label>Pickup time:</label>
+            <input type="datetime-local" name="pickup_time" ><br>
+            <label>Allergies:</label>
+            <input type="text" name="allergies"  ><br>
+            <input id="addOrderButton" type="submit" value="Add Order">
+        </form>
+    </div>
+<%- include('../partials/footer') %>

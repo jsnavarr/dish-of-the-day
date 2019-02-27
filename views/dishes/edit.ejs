@@ -2,7 +2,11 @@
 <h1>Edit Dish</h1>
     <div class="editDish">
         <form action="/dishes/<%= dish._id %>" method="POST">
-            <label>Picture:</label>
+            <% if(dish.picture){ %>
+                <img src="<%= dish.picture %>" height="150" width="150"><br>
+            <% } else { %>
+                <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
+            <% } %>    
             <input type="text" name="picture" value="<%= dish.picture %>" required><br>
             <label>Description:</label>
             <input type="text" name="description" value="<%= dish.description %>" required><br>
@@ -11,11 +15,9 @@
             <label>Price:</label>
             <input type="number" name="price" value="<%= dish.price %>" required><br>
             <label>Availability starts:</label>
-            <input type="date" name="availability_start_date" value="<%= dish.availability_start_date %>" required><br>
-            <input type="time" name="availability_start_time" value="<%= dish.availability_start_time %>" required><br>
+            <input type="datetime-local" name="availability_start" value="<%= av_date_s %>" required><br>
             <label>Availability ends:</label>
-            <input type="date" name="availability_end_date" value="<%= dish.availability_end_date %>" required><br>
-            <input type="time" name="availability_end_time" value="<%= dish.availability_end_time %>" required><br>
+            <input type="datetime-local" name="availability_end" value="<%= av_date_e %>" required><br>
             <label>Total Portions:</label>
             <input type="number" name="totalPortions" value="<%= dish.totalPortions %>" required><br>            <label>Cooker ID:</label>
             <input type="text" name="user_id" value="<%= dish.user_id %>" required><br>

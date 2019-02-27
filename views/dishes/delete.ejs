@@ -2,7 +2,11 @@
 <h1>Delete Dish</h1>
     <div class="deleteDish">
         <form method="POST" action="/dishes/<%= dish._id %>?_method=DELETE">
-            <label>Picture:</label>
+            <% if(dish.picture){ %>
+                <img src="<%= dish.picture %>" height="150" width="150"><br>
+            <% } else { %>
+                <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
+            <% } %>    
             <label><%= dish.picture %></label><br>
             <label>Description:</label>
             <label><%= dish.description %></label><br>
@@ -11,11 +15,9 @@
             <label>Price:</label>
             <label><%= dish.price %></label><br>
             <label>Availability starts:</label>
-            <label><%= dish.availability_start_date %></label><br>
-            <label><%= dish.availability_start_time %></label><br>
+            <label><%= av_date_s %></label><br>
             <label>Availability ends:</label>
-            <label><%= dish.availability_end_date %></label><br>
-            <label><%= dish.availability_end_time %></label><br>
+            <label><%= av_date_e %></label><br>
             <label>Total Portions:</label>
             <label><%= dish.totalPortions %></label><br>
             <label>cooker_id:</label>

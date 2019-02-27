@@ -1,4 +1,20 @@
 var Dish = require('../models/dish');
+var Order = require('../models/order');
+var moment = require('moment');
+
+function getDateArray(object, key){
+    var a = [];
+    if(object){
+        object.forEach(function(o){
+            console.log(o[key]);
+            a.push((moment(o[key]).format("YYYY-MMMM-DD")+" @"+moment(o[key]).format("HH:mm")).toString());
+        })
+    }
+    // var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
+    // var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;
+
+    return a;
+}
 
 module.exports = {
     new: newDish, //render the new dish view
@@ -14,14 +30,18 @@ module.exports = {
 function index(req, res) {
     Dish.find({}).sort({price: 1}).exec(function(err, dishes){
         console.log(dishes);
-        res.render('dishes/index', { dishes });
+        var av_date_s = getDateArray(dishes, 'availability_start');
+        var av_date_e = getDateArray(dishes, 'availability_end');
+        res.render('dishes/index', { dishes, av_date_s, av_date_e });
     });
 }
 
 function deleteDish(req, res) {
     console.log('trying to delete a dish');
     Dish.findById(req.params.id, function(err, dish) {
-      res.render('dishes/delete', { title: 'delete dish', dish});
+        var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
+        var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;
+        res.render('dishes/delete', { title: 'delete dish', dish, av_date_s, av_date_e});
     });
 }
 
@@ -52,7 +72,9 @@ function show(req, res) {
             console.log('error trying to find dish');
         } else {
         console.log(dish);
-        res.render('dishes/show', { title: 'dish details', dish});
+        var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
+        var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;
+        res.render('dishes/show', { title: 'dish details', dish, av_date_s, av_date_e});
         } 
     });
 }
@@ -84,9 +106,9 @@ function editDish(req, res) {
     console.log('trying to edit dish');
     Dish.findById(req.params.id, function(err, dish) {
         if (err) return res.render('dishes');
-        console.log(dish.availability_start.toLocaleString());
-        console.log(new Date(dish.availability_start));
-        res.render('dishes/edit', {title: 'edit dish', dish});
+        var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD[T]HH:mm:ss");
+        var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD[T]HH:mm:ss");
+        res.render('dishes/edit', {title: 'edit dish', dish, av_date_s, av_date_e});
     });
 }
 
@@ -96,11 +118,10 @@ function create(req, res) {
     description : req.body.description,
     type : req.body.type,
     price : req.body.price,
-    availability_start_date : req.body.availability_start_date,
-    availability_start_time : req.body.availability_start_time,
-    availability_end_date : req.body.availability_end_date,
-    availability_end_time : req.body.availability_end_time,
-    totalPortions : req.body.totalPortions});
+    availability_start : req.body.availability_start,
+    availability_end : req.body.availability_end,
+    totalPortions : req.body.totalPortions,
+    user_id: req.body.user_id});
     console.log(dish);
     console.log(req.body);
     dish.save(function(err) {
