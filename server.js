@@ -10,7 +10,9 @@ var dishesRouter = require('./routes/dishes');
 var ordersRouter = require('./routes/orders');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
-var apisRouter = require('./routes/api');
+// var apisRouter = require('./routes/api');
+var apisDishesRouter = require('./routes/apis/dishes');
+var apisOrdersRouter = require('./routes/apis/orders');
 
 var app = express();
 
@@ -30,7 +32,8 @@ app.use('/dishes', dishesRouter);
 app.use('/', ordersRouter);
 app.use('/users', usersRouter);
 app.use('/', commentsRouter);
-app.use('/api', apisRouter);
+app.use('/apis/dishes', apisDishesRouter);
+app.use('/apis/orders', apisOrdersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

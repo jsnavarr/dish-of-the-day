@@ -1,49 +1,49 @@
-var Dish = require('../../models/dish');
+var Order = require('../../models/order');
 
 module.exports = {
-  getAllDishes,
-  getOneDish,
-  createDish,
-  updateDish,
-  deleteDish
+  getAllOrders,
+  getOneOrder,
+  createOrder,
+  updateOrder,
+  deleteOrder
 };
 
-function getAllDishes(req, res) {
-  Dish.find({})
-    .then(dishes => {
+function getAllOrders(req, res) {
+  Order.find({})
+    .then(orders => {
       res.status(200)
-        .json(dishes)
+        .json(orders)
     })
 }
 
-function getOneDish(req, res) {
-  Dish.findById(req.params.id)
-    .then(dish => {
+function getOneOrder(req, res) {
+  Order.findById(req.params.id)
+    .then(order => {
       res.status(200)
-        .json(dish)
+        .json(order)
     })
 }
 
-function createDish(req, res) {
-  Dish.create(req.body)
-    .then(dish => {
+function createOrder(req, res) {
+  Order.create(req.body)
+    .then(order => {
       res.status(201)
-        .json(dish)
+        .json(order)
     })
 }
 
-function updateDish(req, res) {
-  Dish.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(dish => {
+function updateOrder(req, res) {
+  Order.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(order => {
       res.status(200)
-        .json(dish)
+        .json(order)
     })
 }
 
-function deleteDish(req, res) {
-  Dish.findByIdAndRemove(req.params.id)
-    .then(dish => {
+function deleteOrder(req, res) {
+  Order.findByIdAndRemove(req.params.id)
+    .then(order => {
       res.status(200)
-        .json(dish)
+        .json(order)
     })
 }
