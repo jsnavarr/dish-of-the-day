@@ -6,6 +6,14 @@ body {
   margin: 0 auto;
   max-width: 400px;
 }
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: blue;
+  padding: 10px;
+  font-size: 18px;
+}
 h1 {
   text-align: center;
 }
