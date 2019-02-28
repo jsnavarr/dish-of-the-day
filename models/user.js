@@ -17,27 +17,30 @@ var mongoose = require('mongoose');
     },
     street: {
         type: String,
-        required: true
+        // required: true
     },
     number: {
        type: String,
-       required: true
+    //    required: true
     },
     zip: {
         type: Number,
-        required: true
+        // required: true
     },
     city: {
        type: String,
-       required: true
+    //    required: true
     },
     state: {
         type: String, //should be an enum with all states
-        required: true
+        // required: true
     },
     country: {
        type: String,
        default: 'USA'
+    },
+    googleId: {
+        type: String
     }
  }); 
 

@@ -15,7 +15,12 @@ module.exports = {
 function index(req, res) {
     User.find({}).sort({name: 1}).exec(function(err, users){
       // console.log(users);
-      res.render('users/index', { users });
+      res.render('users/index', {
+        users,
+        user: req.user,
+        name: req.query.name,
+        // sortKey
+      });
     });
 }
 

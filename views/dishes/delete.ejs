@@ -17,7 +17,9 @@
                 <div><%= av_date_e %></div>
                 <div>Total Portions :<%= dish.totalPortions %></div>
                 <div>cooker_id :<%= dish.user_id %></div>
+                <% if (user._id.equals(gUser && gUser._id)) { %>
                 <input id="deleteDishButton" type="submit" value="Delete Dish">
+                <% } %>
             </div>
         </form>
     </div>

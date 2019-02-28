@@ -103,7 +103,7 @@ function index(req, res) {
             var pickup_times = getDateArray(orders, 'pickup_time');
             // var dishes = getDishesFromOrders(orders);
             // console.log('dishes xxx '+dishes);
-            res.render('orders/index', { orders, pickup_times});
+            res.render('orders/index', { orders, pickup_times, user: req.user});
         }
     });
 }
@@ -118,7 +118,7 @@ function deleteOrder(req, res) {
                 var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");
                 var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss"); 
                 var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD")+" @"+moment(order.pickup_time).format("HH:mm:ss");
-                res.render('orders/delete', { title: 'delete order', order, pickup_time, dish, av_date_s, av_date_e});
+                res.render('orders/delete', { title: 'delete order', order, pickup_time, dish, av_date_s, av_date_e, user: req.user});
             }
         });      
     });
@@ -158,7 +158,7 @@ function show(req, res) {
                     var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");
                     var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss"); 
                     var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD")+" @"+moment(order.pickup_time).format("HH:mm:ss");
-                    res.render('orders/show', { title: 'order details', order, pickup_time, dish, av_date_s, av_date_e});
+                    res.render('orders/show', { title: 'order details', order, pickup_time, dish, av_date_s, av_date_e, user: req.user});
                 }
             });
         } 
@@ -196,7 +196,7 @@ function editOrder(req, res) {
             } else {
                 var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
                 var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;    
-                res.render('orders/edit', {title: 'edit order', order, pickup_time, dish, av_date_s, av_date_e});
+                res.render('orders/edit', {title: 'edit order', order, pickup_time, dish, av_date_s, av_date_e,user: req.user});
             }
         });
     });
@@ -227,7 +227,7 @@ function newOrder(req, res) {
         } else {
             var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
             var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;    
-            res.render('orders/new', {dish_id: req.params.id, dish, av_date_s, av_date_e});
+            res.render('orders/new', {dish_id: req.params.id, dish, av_date_s, av_date_e, user: req.user});
         }
     });
 }
