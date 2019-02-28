@@ -3,13 +3,17 @@
     <div class="newOrder">
         <form action="/dishes/<%= dish_id %>/orders" method="POST">
             <%- include('../partials/dish') %>
-            <label>Quantity:</label>
-            <input type="number" name="quantity" ><br>
-            <label>Pickup time:</label>
-            <input type="datetime-local" name="pickup_time" ><br>
-            <label>Allergies:</label>
-            <input type="text" name="allergies"  ><br>
-            <input id="addOrderButton" type="submit" value="Add Order">
+            <div class="allOrders">
+                <div class="order-details">
+                    <div>Quantity:</div>
+                    <input type="number" name="quantity" >
+                    <div>Pickup time:</div>
+                    <input type="datetime-local" name="pickup_time" >
+                    <div>Allergies:</div>
+                    <input type="text" name="allergies"  >
+                    <input id="addOrderButton" type="submit" value="Add Order">
+                </div>
+            </div>
         </form>
     </div>
 <%- include('../partials/footer') %>

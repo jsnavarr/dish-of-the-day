@@ -28,28 +28,18 @@ function getDishesFromOrders(orders){
     var dishes = [{}];
     var i=0;
     orders.forEach(function(order){
-        // console.log('order '+order);
         console.log('dish id '+ order['dish_id']);
-        // while(true){
-        //     try{
-
-        //     }
         Dish.findById(order['dish_id'], function(err, dish) {
             console.log("dish "+dish);
             if(err){
                 console.log('error trying to find a dish');
             } else {
-                    if(dish[i]){
-                        console.log('dish to pop'+ dish['picture']);
-                        dishes.pop({picture: dish['picture'], desciption: dish['description'], type: dish['type'], price: dish['price']});         
-                        console.log('dishes '+ i + dishes[i]);
-                        i++;
-                        break;
-                    }
+                console.log('dish to pop'+ dish['picture']);
+                dishes.pop({picture: dish['picture'], desciption: dish['description'], type: dish['type'], price: dish['price']});         
+                console.log('dishes '+ i + dishes[i]);
+                i++;
             }
         });      
-    // }
-
     });
     console.log('dishes returned '+dishes);
     return dishes;
@@ -60,16 +50,11 @@ function index(req, res) {
         if(err){
             console.log('error trying to get orders')
         } else {
-            while(true){
-                if(orders){
-                    console.log(orders);
-                    var pickup_times = getDateArray(orders, 'pickup_time');
-                    var dishes = getDishesFromOrders(orders);
-                    console.log('dishes xxx '+dishes);
-                    res.render('orders/index', { orders, pickup_times});
-                    break;
-                }
-            }
+            console.log(orders);
+            var pickup_times = getDateArray(orders, 'pickup_time');
+            var dishes = getDishesFromOrders(orders);
+            console.log('dishes xxx '+dishes);
+            res.render('orders/index', { orders, pickup_times});
         }
     });
 }
@@ -152,7 +137,7 @@ function editOrder(req, res) {
     console.log('trying to edit order');
     Order.findById(req.params.id, function(err, order) {
         if (err) return res.render('orders');
-        var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD")+" @"+moment(order.pickup_time).format("HH:mm:ss");
+        var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD[T]HH:mm:ss");
         console.log(pickup_time);
         console.log(order);
         //get the dish related to this order so the information is displayed

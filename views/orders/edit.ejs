@@ -1,15 +1,17 @@
 <%- include('../partials/header') %>    
 <h1>Edit Order</h1>
     <%- include('../partials/dish') %>
-    <div class="editOrder">
+    <div class="allOrders">
         <form action="/orders/<%= order._id %>" method="POST">
-            <label>Quantity:</label>
-            <input type="number" name="quantity" value="<%= order.quantity %>" ><br>
-            <label>Pickup time:</label>
-            <input type="datetime-local" name="pickup_time" value="<%= pickup_time %>" ><br>
-            <label>Allergies:</label>
-            <input type="text" name="allergies" value="<%= order.allergies %>" ><br>
-            <input id="editOrderButton" type="submit" value="Save Order">
+            <div class="order-details">
+                <div>Quantity:</div>
+                <input type="number" name="quantity" value="<%= order.quantity %>" >
+                <div>Pickup time:</div>
+                <input type="datetime-local" name="pickup_time" value="<%= pickup_time %>" >
+                <div>Allergies:</div>
+                <input type="text" name="allergies" value="<%= order.allergies %>" >
+                <input id="editOrderButton" type="submit" value="Save Order">
+            </div>
         </form>
             <a href="/orders"> Cancel</a>
     </div>

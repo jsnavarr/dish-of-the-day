@@ -1,50 +1,56 @@
 <%- include('../partials/header') %>    
 <h1>Dish details</h1>
-    <div class="detailDish">
+    <div class="allDishes">
         <% if(dish.picture){ %>
             <img src="<%= dish.picture %>" height="150" width="150"><br>
         <% } else { %>
             <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
         <% } %>
-        <label><%= dish.description %></label><br>
-        <label>Type:</label>
-        <label><%= dish.type %></label><br>
-        <label>Price: $</label>
-        <label><%= dish.price %></label><br>
-        <label>Availability starts:</label>
-        <label><%= av_date_s %></label><br>
-        <label>Availability ends:</label>
-        <label><%= av_date_e %></label><br>
-        <label>Total Portions:</label>
-        <label><%= dish.totalPortions %></label><br>
-        <label>cooker_id:</label>
-        <label><%= dish.user_id %></label><br>
-        <% if(dish.comments.length) { %>
-            <label>Comments and rating</label><br>
-            <% dish.comments.forEach(function(c) {%>
-                <label>Comment: <%= c.text %></label><br>
-                <label>Rating <%= c.rating %></label><br>
-                <label><%= c.createdAt %></label><br>
-            <% }); %>
-        <% } else {%>
-            <label>No comments added yet</label><br>
-        <% } %>
-        <a href="/dishes/<%=dish._id %>/edit"> edit</a>
-        <a href="/dishes/<%=dish._id %>/delete"> delete</a>
-        <a href="/dishes/<%=dish._id %>/orders/new"> new Order</a>
-        <a href="/dishes"> all dishes </a><br>
-        <form action="/dishes/<%= dish._id %>/comment" method="POST">
-            <textarea name="text"></textarea><br>
-            <label>Rating: </label>
-            <select name="rating">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select><br>
-        <input id="addCommentButton" type="submit" value="Add Comment and Rating">
-        </form>
+        <div class="dish-details">
+            <div class="dish-description"><%= dish.description %></div>        
+            <div>Type:<%= dish.type %></div>
+            <div>Price: $<%= dish.price %></div>
+            <div>Availability:</div>
+            <div><%= av_date_s %> -> </div>
+            <div><%= av_date_e %></div>
+            <div>Total Portions: <%= dish.totalPortions %></div>
+            <div>cooker_id: <%= dish.user_id %></div>
+        </div>
+        <div class="quick-nav-links">
+                <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                <a href="/dishes/<%=dish._id %>/orders/new"> new Order</a>
+            <a href="/dishes"> all dishes </a>
+        </div>
+        <div class = "comments-ratings">
+            <form name="add-comment-form" action="/dishes/<%= dish._id %>/comment" method="POST">
+                <div><textarea rows="3" cols="34" name="text"></textarea></div>
+                <div>Rating: 
+                    <select name="rating">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <input id="addCommentButton" type="submit" value="Add Comment and Rating">
+            </form>
+        </div>
+        <div class="display-all-comments">
+            <% if(dish.comments.length) { %>
+                <div class="comment-title">Comments and rating</div>
+                <% dish.comments.forEach(function(c) {%>
+                    <div class="comment-details">
+                        <div><%= c.text %></div>
+                        <div>Rating <%= c.rating %></div>
+                        <div class="comment-date"><%= c.createdAt %></div>
+                    </div>
+                <% }); %>
+            <% } else {%>
+                <h1>No comments added yet</h1>
+            <% } %>
+        </div>
     </div>
 <%- include('../partials/footer') %>

@@ -1,15 +1,14 @@
 <%- include('../partials/header') %>    
 <h1>Delete Order</h1>
     <%- include('../partials/dish') %>
-    <div class="deleteOrder">
+    <div class="allOrders">
         <form method="POST" action="/orders/<%= order._id %>?_method=DELETE">
-            <label>Quantity:</label>
-            <ilabel><%= order.quantity %></label><br>
-            <label>Pickup time:</label>
-            <label><%= pickup_time %></label><br>
-            <label>Allergies:</label>
-            <label><%= order.allergies %></label><br>
-            <input id="deleteOrderButton" type="submit" value="Delete Order">
+            <div class="order-details">
+                <div>Quantity :<%= order.quantity %></div>
+                <div>Pickup time: <%= pickup_time %></div>
+                <div>Allergies: <%= order.allergies %></div>
+                <input id="deleteOrderButton" type="submit" value="Delete Order">
+            </div>
         </form>
             <a href="/orders"> Cancel</a>
     </div>

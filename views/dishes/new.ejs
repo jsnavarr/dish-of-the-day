@@ -2,24 +2,27 @@
 <h1>New Dish</h1>
     <div class="addNewDish">
         <form action="/dishes" method="POST">
-            <!-- l -->
-            <label>Picture:</label>
-            <input type="text" name="picture" ><!-- required --><br>
-            <label>Description:</label>
-            <input type="text" name="description" ><!-- required --><br>
-            <label>Type:</label>
-            <input type="text" name="type" ><!-- required --><br>
-            <label>Price:</label>
-            <input type="number" name="price"  ><!-- required --><br>
-            <label>Availability starts:</label>
-            <input type="datetime-local" name="availability_start" ><!-- required --><br>
-            <label>Availability ends:</label>
-            <input type="datetime-local" name="availability_end" ><!-- required --><br>
-            <label>Total Portions:</label>
-            <input type="number" name="totalPortions" ><!-- required --><br>
-            <label>Cooker ID:</label>
-            <input type="text" name="user_id" ><!-- required --><br>
-            <input id="addDishButton" type="submit" value="Add Dish">
+            <div class="allDishes">
+                <div class="dish-details">
+                    <div>Picture:</div>
+                    <input type="text" name="picture" required>
+                    <div>Description:</div>
+                    <input type="text" name="description" required>
+                    <div>Type:</div>
+                    <input type="text" name="type" required>
+                    <div>Price:</div>
+                    <input type="number" name="price"  required>
+                    <div>Availability starts:</div>
+                    <input type="datetime-local" name="availability_start" required>
+                    <div>Availability ends:</div>
+                    <input type="datetime-local" name="availability_end" required>
+                    <div>Total Portions:</div>
+                    <input type="number" name="totalPortions" required>
+                    <div>Cooker ID:</div>
+                    <input type="text" name="user_id" required>
+                    <input id="addDishButton" type="submit" value="Add Dish">
+                </div>
+            </div>
         </form>
     </div>
 <%- include('../partials/footer') %>

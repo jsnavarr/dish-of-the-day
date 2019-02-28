@@ -1,36 +1,35 @@
 <%- include('../partials/header') %>    
 <h1>All Dishes</h1>
-    <div class="allDishes">
-        <% if (dishes.length > 0) { %>
-            <% dishes.forEach(function(dish, idx) { %>
-                <% if(dish.picture){ %>
-                    <img src="<%= dish.picture %>" height="150" width="150"><br>
-                <% } else { %>
-                    <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
-                <% } %>
-                <!-- <label>Description:</label> -->
-                <label><%= dish.description %></label><br>
-                <label>Type:</label>
-                <label><%= dish.type %></label><br>
-                <label>Price: $</label>
-                <label><%= dish.price %></label><br>
-                <label>Availability starts:</label>
-                <label><%= av_date_s[idx] %></label><br>
-                <label>Availability ends:</label>
-                <label><%= av_date_e[idx] %></label><br>
-                <label>Total Portions:</label>
-                <label><%= dish.totalPortions %></label><br>
-                <label>cooker_id:</label>
-                <label><%= dish.user_id %></label><br>
+    <% if (dishes.length > 0) { %>
+        <% dishes.forEach(function(dish, idx) { %>
+            <div class="allDishes">
+            <% if(dish.picture){ %>
+                <img src="<%= dish.picture %>" height="150" width="150">
+            <% } else { %>
+                <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150">
+            <% } %>
+            
+            <div class="dish-details">
+                <div class="dish-description"><%= dish.description %></div>
+                <div><a>Type: </a><%= dish.type %></div>
+                <div><a>Price: </a>$<%= dish.price %></div>
+                <div><a>Availability: </a></div>
+                <div><%= av_date_s[idx] %> -> </div>
+                <div><%= av_date_e[idx] %></div>
+                <div><a>Total Portions: </a><%= dish.totalPortions %></div>
+                <div><a>cooker_id: </a><%= dish.user_id %></div>
+            </div>
+            <div class="quick-nav-links">
                 <a href="/dishes/<%=dish._id %>"> details</a>
                 <a href="/dishes/<%=dish._id %>/edit"> edit</a>
                 <a href="/dishes/<%=dish._id %>/delete"> delete</a>
                 <a href="/dishes/<%=dish._id %>/orders/new"> Place Order</a>
-                <br><br>
-            <% }); %>
-        <% } else { %>
-            <h1>No dishes published yet...</h1>
-        <% } %>
-        <a href="/dishes/new"> new</a>
+            </div>
+        </div>
+        <% }); %>
     </div>
+    <% } else { %>
+        <h1>No dishes published yet...</h1>
+    <% } %>
+    <a href="/dishes/new"> new</a>
 <%- include('../partials/footer') %>

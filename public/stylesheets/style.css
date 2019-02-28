@@ -1,8 +1,128 @@
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #4c4444;
+  color: azure;
+  margin: 0 auto;
+  max-width: 400px;
+}
+h1 {
+  text-align: center;
 }
 
+img {
+  border: double 10px cornflowerblue;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+}
 a {
-  color: #00B7FF;
+  color: azure;
+}
+
+.allDishes, .allOrders, .allUsers {
+  background: bisque;
+  padding: 10px 0px 0px 0px;
+  margin: 30px 0px;
+}
+.dish-details, .order-details, .user-details {
+  display: flex;
+  flex-direction: column;
+  background: blue;
+  color: azure;
+  font-size: 14px;
+  width: 300px;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 10px double azure;
+}
+.dish-details div, .order-details div, .user-details div{
+  padding: 8px 10px 0px 10px;
+}
+
+.dish-details input, .order-details input, .user-details input, .user-details select {
+  margin: 0px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.dish-description {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+.quick-nav-links {
+  background: chocolate;
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  margin: 10px auto 40px auto;
+  border-radius: 10px;
+  border: 10px double azure;
+  padding: 5px;
+}
+
+.quick-nav-links a {
+  display: flex;
+}
+
+.comments-ratings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: solid 4px azure;
+  border-radius: 10px;
+  width: 300px;
+  margin: 0 auto;
+  background: blue;
+  /* padding: 8px; */
+}
+.comments-ratings div{
+  display: flex;
+  justify-content: center;
+  padding: 5px; 
+}
+
+#addCommentButton {
+  display: flex;
+  margin: 5px auto;
+}
+
+textarea {
+  font-size: 16px;
+}
+.comment-title {
+  background: mediumslateblue;
+  margin: 10px auto 0 auto;
+  width: 300px;
+  border: 4px double white;
+  border-radius: 10px 10px 0 0;
+  padding: 5px;
+  text-align: center;
+}
+.comment-details {
+  background: forestgreen;
+  border: 4px double white;
+  padding: 5px;
+  width: 300px;
+  margin: 0 auto;
+}
+.comment-date {
+  font-size: 9px;
+}
+#addDishButton, #editDishButton, #deleteDishButton, #addOrderButton, #editOrderButton, #deleteOrderButton, #addUserButton, #deleteUserButton  {
+  margin: 20px auto;
+  width: 100px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+#addDishButton, #editDishButton, #addOrderButton, #editOrderButton, #addUserButton {
+  background: lightgreen;
+} 
+
+#deleteDishButton, #deleteOrderButton, #deleteUserButton {
+  background: orangered;
+  color: white;
 }

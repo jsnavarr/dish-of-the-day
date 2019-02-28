@@ -1,28 +1,24 @@
 <%- include('../partials/header') %>    
 <h1>Delete Dish</h1>
-    <div class="deleteDish">
+    <div class="allDishes">
         <form method="POST" action="/dishes/<%= dish._id %>?_method=DELETE">
             <% if(dish.picture){ %>
-                <img src="<%= dish.picture %>" height="150" width="150"><br>
+                <img src="<%= dish.picture %>" height="150" width="150">
             <% } else { %>
                 <img src="https://i.imgur.com/seGjXGn.jpg" height="150" width="150"><br>
-            <% } %>    
-            <label><%= dish.picture %></label><br>
-            <label>Description:</label>
-            <label><%= dish.description %></label><br>
-            <label>Type:</label>
-            <label><%= dish.type %></label><br>
-            <label>Price:</label>
-            <label><%= dish.price %></label><br>
-            <label>Availability starts:</label>
-            <label><%= av_date_s %></label><br>
-            <label>Availability ends:</label>
-            <label><%= av_date_e %></label><br>
-            <label>Total Portions:</label>
-            <label><%= dish.totalPortions %></label><br>
-            <label>cooker_id:</label>
-            <label><%= dish.user_id %></label><br>
-            <input id="deleteDishButton" type="submit" value="Delete Dish">
+            <% } %>
+            <div class="dish-details">
+                <div>Picture: <%= dish.picture %></div>
+                <div>Description: <%= dish.description %></div>
+                <div>Type: <%= dish.type %></div>
+                <div>Price: $<%= dish.price %></div>
+                <div>Availability</div>
+                <div><%= av_date_s %> -></div>
+                <div><%= av_date_e %></div>
+                <div>Total Portions :<%= dish.totalPortions %></div>
+                <div>cooker_id :<%= dish.user_id %></div>
+                <input id="deleteDishButton" type="submit" value="Delete Dish">
+            </div>
         </form>
     </div>
 <%- include('../partials/footer') %>

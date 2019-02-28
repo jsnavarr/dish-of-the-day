@@ -1,7 +1,8 @@
 <%- include('../partials/header') %>    
 <h1>User Details</h1>
-    <div class="detailsUser">
-            <label>role:</label>
+    <div class="allUsers">
+        <div class = "user-details">
+            <div>Role:</div>
             <select name="role">
                 <option value="CONSUMER" 
                 {% if user.role == "CONSUMER" %} 
@@ -11,19 +12,19 @@
                 {% if user.role == "COOKER" %} 
                     selected 
                 {% endif %}>COOKER</option>
-            </select><br>
-            <label>Name:</label>
-            <input type="text" name="name" value="<%= user.name %>" required><br>
-            <label>e-mail:</label>
-            <input type="mail" name="email" value="<%= user.email %>"required><br>
-            <label>Address:</label>
-            <label>Street:</label>
-            <input type="text" name="street" value="<%= user.street %>"required><br>
-            <label>Number:</label>
-            <input type="text" name="number" value="<%= user.number %>"required><br>
-            <label>Zip:</label>
-            <input type="text" name="zip" value="<%= user.zip %>"required><br>
-            <label>State:</label>
+            </select>
+            <div>Name:</div>
+            <input type="text" name="name" value="<%= user.name %>" required>
+            <div>e-mail:</div>
+            <input type="mail" name="email" value="<%= user.email %>"required>
+            <div>Address:</div>
+            <div>Street:</div>
+            <input type="text" name="street" value="<%= user.street %>"required>
+            <div>Number:</div>
+            <input type="text" name="number" value="<%= user.number %>"required>
+            <div>Zip:</div>
+            <input type="text" name="zip" value="<%= user.zip %>"required>
+            <div>State:</div>
             <select name="state">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -76,11 +77,14 @@
                 <option value="WV">West Virginia</option>
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
-            </select><br>
-            <label>City:</label>
+            </select>
+            <div>City:</div>
             <input type="text" name="city" value="<%= user.city %>"required><br>
+        </div>
+        <div class="quick-nav-links">
             <a href="/users/<%=user._id %>/edit"> edit </a>
             <a href="/users/<%=user._id %>/delete"> delete </a>
             <a href="/users"> all users </a>
+        </div>
     </div>
 <%- include('../partials/footer') %>
