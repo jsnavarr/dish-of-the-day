@@ -32,6 +32,7 @@ app.use('/dishes', dishesRouter);
 app.use('/', ordersRouter);
 app.use('/users', usersRouter);
 app.use('/', commentsRouter);
+// app.use('/apis', apisRouter);
 app.use('/apis/dishes', apisDishesRouter);
 app.use('/apis/orders', apisOrdersRouter);
 

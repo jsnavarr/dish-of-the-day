@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var dishesCtrl = require('../controllers/api/dishes');
-// var ordersCtrl = require('../controllers/api/orders');
+// var dishesCtrl = require('../controllers/api/dishes');
+var apiOrdersCtrl = require('../controllers/api/orders');
 
 router.get('/dishes', dishesCtrl.getAllDishes);
 router.get('/dishes/:id', dishesCtrl.getOneDish)
@@ -15,11 +15,11 @@ router.put('/dishes/:id', dishesCtrl.updateDish)
 // router.delete('/orders/:id', dishesCtrl.deleteOrder)
 // router.put('/orders/:id', dishesCtrl.updateOrder)
 
-router.get('/orders', ordersCtrl.getAllOrders);
-router.get('/orders/:id', ordersCtrl.getOneOrder)
-router.post('/orders', ordersCtrl.createOrder);
-router.delete('/orders/:id', ordersCtrl.deleteOrder)
-router.put('/orders/:id', ordersCtrl.updateOrder)
+router.get('/orders', apiOrdersCtrl.getAllOrders);
+router.get('/orders/:id', apiOrdersCtrl.getOneOrder)
+router.post('/orders', apiOrdersCtrl.createOrder);
+router.delete('/orders/:id', apiOrdersCtrl.deleteOrder)
+router.put('/orders/:id', apiOrdersCtrl.updateOrder)
 
 
 module.exports = router;

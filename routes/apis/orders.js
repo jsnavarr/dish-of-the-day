@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ordersCtrl = require('../../controllers/api/orders');
+var apiOrdersCtrl = require('../../controllers/api/orders');
 
 router.get('/', apiOrdersCtrl.getAllOrders);
 router.get('/:id', apiOrdersCtrl.getOneOrder)

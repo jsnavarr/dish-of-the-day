@@ -24,26 +24,75 @@ function getDateArray(object, key){
     return a;
 }
 
-function getDishesFromOrders(orders){
-    var dishes = [{}];
-    var i=0;
-    orders.forEach(function(order){
-        console.log('dish id '+ order['dish_id']);
-        Dish.findById(order['dish_id'], function(err, dish) {
-            console.log("dish "+dish);
-            if(err){
-                console.log('error trying to find a dish');
-            } else {
-                console.log('dish to pop'+ dish['picture']);
-                dishes.pop({picture: dish['picture'], desciption: dish['description'], type: dish['type'], price: dish['price']});         
-                console.log('dishes '+ i + dishes[i]);
-                i++;
-            }
-        });      
-    });
-    console.log('dishes returned '+dishes);
-    return dishes;
-}
+// function getDishesFromOrders(orders){
+//     var dishes = [{}];
+//     var i=0;
+//     orders.forEach(function(order){
+//         console.log('dish id '+ order['dish_id']);
+//         Dish.findById(order['dish_id'], function(err, dish) {
+//             console.log("dish "+dish);
+//             if(err){
+//                 console.log('error trying to find a dish');
+//             } else {
+//                 console.log('dish to pop'+ dish['picture']);
+//                 dishes.pop({picture: dish['picture'], desciption: dish['description'], type: dish['type'], price: dish['price']});         
+//                 console.log('dishes '+ i + dishes[i]);
+//                 i++;
+//             }
+//         });      
+//     });
+//     console.log('dishes returned '+dishes);
+//     return dishes;
+// }
+
+// function getOrders() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             Order.find({}).sort({pickup_time: 1}).exec(function(err, orders){
+//                 if(err){
+//                     resolve(null)
+//                 } else {
+//                     resolve(orders);
+//                 }
+//             });
+//         }, 2000);
+//     });
+// }
+
+// function getDishes(orders) {
+//     var dishes = [];
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             orders.forEach(function(order){
+//                 Dish.findById(order['dish_id'], function(err, dish) {
+//                     // if(err){
+//                     //     resolve(null);
+//                     // } else {
+//                         dishes.push(dish);
+//                         console.log('dish '+ dishes);
+//                     // }
+//                 });      
+//             });
+//             resolve(dishes);
+//         }, 4000);
+//     });
+// }
+
+// async function getOrdersAndDishes(){
+//     var orders = await getOrders();
+//     console.log('orders '+orders);
+//     var dishes = await getDishes(orders);
+//     console.log('dishes '+dishes);
+//     return [orders, dishes];
+// }
+
+// function index(req, res) {
+//     var result = getOrdersAndDishes();
+//     var orders = result[0];
+//     var dishes = result[1];
+//     var pickup_times = getDateArray(orders, 'pickup_time');
+//     res.render('orders/index', { orders, pickup_times});    
+// }
 
 function index(req, res) {
     Order.find({}).sort({pickup_time: 1}).exec(function(err, orders){
@@ -52,8 +101,8 @@ function index(req, res) {
         } else {
             console.log(orders);
             var pickup_times = getDateArray(orders, 'pickup_time');
-            var dishes = getDishesFromOrders(orders);
-            console.log('dishes xxx '+dishes);
+            // var dishes = getDishesFromOrders(orders);
+            // console.log('dishes xxx '+dishes);
             res.render('orders/index', { orders, pickup_times});
         }
     });
