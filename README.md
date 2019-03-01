@@ -76,19 +76,24 @@ To place an order the user only has to click in the "place order" link at the bo
 
 
 User can browse orders and go to its details.
+
 ![Order details](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-orderdetails.png)
 
 
 To delete an order just click on the "delete" link at the bottom of the order which will take user to a new page to confirm to delete the order
+
 ![Delete order](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-deleteorder.png)
 
 
 User can update its information when clicking on "edut" at the bottom of the user details.
+
 ![Edit user](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-editorder.png)
 
 
 User information can be deleted from the database
+
 ![Delete user](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-deleteuser.png)
+
 
 ## Main challenges (too many to list all here)
 	- datetime-local was being added to the database but when trying to set it in HTML when editing a dish availability it was not displayed.
