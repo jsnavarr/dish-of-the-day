@@ -95,7 +95,7 @@ function editUser(req, res, next) {
   console.log('trying to edit user');
   User.findById(req.params.id, function(err, user) {
     if (err) return res.render('users', {message: 'error updating user'});
-    res.render('users/edit', {title: 'edit user', user});
+    res.render('users/edit', {title: 'edit user', user, message});
   });
 }
 
