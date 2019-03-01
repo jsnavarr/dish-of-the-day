@@ -1,11 +1,59 @@
+/* styling for the welcome page */
+#welcome {
+  font-size: 40px;
+  text-shadow: -1px 0 black, 0 3px black, 1px 0px black, 0 -1px black;
+  color: mintcream;
+  background-image: url(https://i.imgur.com/FZ5hr1O.jpgs);
+  padding: 20px;
+  margin: 0px auto;
+  font-weight: 600;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome-text{
+  font-size: 30px;
+  margin: 20px auto;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* styling for the login bar */
+.login {
+  display: flex;
+  background: bisque;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.login a, .login i {
+  display: flex;
+  padding: 10px 10px 0px 0px;
+  color: blue;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login a:hover, .login i:hover {
+  color: white;
+  background:chocolate;
+  border-radius: 10px;
+  padding: 10px 10px 0px 10px;
+}
+
+
 body {
-  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #4c4444;
   color: azure;
   margin: 0 auto;
   max-width: 400px;
 }
+
+/*styling for the header navigation bar */
 nav {
   display: flex;
   flex-direction: row;
@@ -14,10 +62,18 @@ nav {
   padding: 10px;
   font-size: 18px;
 }
-h1 {
-  text-align: center;
+nav a {
+  padding: 5px;
 }
 
+nav a:hover {
+  background: azure;
+  color: blue;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+/*styling the images for the dishes */
 img {
   border: double 10px cornflowerblue;
   border-radius: 10px;
@@ -26,15 +82,21 @@ img {
   margin: 0 auto;
   display: flex;
 }
+
+/*deafult color for the <a> tags */
 a {
   color: azure;
 }
 
+/* styling for the title below the navigation bar */
 .allDishes, .allOrders, .allUsers {
   background: bisque;
   padding: 10px 0px 0px 0px;
   margin: 30px 0px;
+  border-radius: 10px 10px 0 0;
 }
+
+/*styling for the details of the diff elements */
 .dish-details, .order-details, .user-details {
   display: flex;
   flex-direction: column;
@@ -46,6 +108,7 @@ a {
   border-radius: 10px;
   border: 10px double azure;
 }
+
 .dish-details div, .order-details div, .user-details div{
   padding: 8px 10px 0px 10px;
 }
@@ -76,6 +139,14 @@ a {
   display: flex;
 }
 
+.quick-nav-links a:hover {
+  background: azure;
+  color: blue;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+/*styling for the dishes comment area */
 .comments-ratings {
   display: flex;
   flex-direction: row;
@@ -101,6 +172,7 @@ a {
 textarea {
   font-size: 16px;
 }
+
 .comment-title {
   background: mediumslateblue;
   margin: 10px auto 0 auto;
@@ -120,17 +192,53 @@ textarea {
 .comment-date {
   font-size: 9px;
 }
-#addDishButton, #editDishButton, #deleteDishButton, #addOrderButton, #editOrderButton, #deleteOrderButton, #addUserButton, #deleteUserButton  {
+#addCommentButton, #addDishButton, #editDishButton, #deleteDishButton, #addOrderButton, #editOrderButton, #deleteOrderButton, #addUserButton, #deleteUserButton  {
   margin: 20px auto;
   width: 100px;
   font-size: 14px;
   border-radius: 5px;
 }
-#addDishButton, #editDishButton, #addOrderButton, #editOrderButton, #addUserButton {
+#addCommentButton,#addDishButton, #editDishButton, #addOrderButton, #editOrderButton, #addUserButton {
   background: lightgreen;
 } 
 
-#deleteDishButton, #deleteOrderButton, #deleteUserButton {
+#addCommentButton:hover, #addDishButton:hover,  #editDishButton:hover,  #addOrderButton:hover,  #editOrderButton:hover,  #addUserButton:hover {
+  background: chocolate;
+  color: white;
+} 
+
+#deleteDishButton,  #deleteOrderButton, #deleteUserButton {
   background: orangered;
   color: white;
+}
+
+#deleteDishButton:hover,  #deleteOrderButton:hover, #deleteUserButton:hover {
+  background: yellow;
+  color: black;
+}
+
+.allUDO {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 5px 0px 5px;
+  padding: 5px 5px 0px 5px;
+}
+.allUDO {
+  font-size: 20px;
+}
+.addUserLink, .addDishesLink {
+  display: flex;
+  font-size: 16px;
+  background: rgb(41, 235, 41);
+  padding: 5px 10px;
+  color: black;
+  border-radius: 10px;
+  text-decoration: none
+}
+
+.no-data {
+  font-size: 18px;
+  color: blue;
+  padding: 5px 20px;
 }

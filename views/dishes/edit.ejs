@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>Edit Dish</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>Edit Dish</div>
+    </div>        
     <div class="allDishes">
         <form action="/dishes/<%= dish._id %>" method="POST">
             <% if(dish.picture){ %>
@@ -23,7 +25,7 @@
                 <div>Total Portions:</div>
                 <input type="number" name="totalPortions" value="<%= dish.totalPortions %>" required>            
                 <div>Cooker ID:</div>
-                <input type="text" name="user_id" value="<%= dish.user_id %>" required>
+                <input type="text" name="user_id" value="<%= dish.user_id %>" required><br>
                 <input id="editDishButton" type="submit" value="Save Dish">
             </div>
         </form>

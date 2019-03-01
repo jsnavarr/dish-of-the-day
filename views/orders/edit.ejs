@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>Edit Order</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>Edit Order</div>
+    </div>  
     <%- include('../partials/dish') %>
     <div class="allOrders">
         <form action="/orders/<%= order._id %>" method="POST">
@@ -9,10 +11,9 @@
                 <div>Pickup time:</div>
                 <input type="datetime-local" name="pickup_time" value="<%= pickup_time %>" >
                 <div>Allergies:</div>
-                <input type="text" name="allergies" value="<%= order.allergies %>" >
+                <input type="text" name="allergies" value="<%= order.allergies %>" ><br>
                 <input id="editOrderButton" type="submit" value="Save Order">
             </div>
         </form>
-            <a href="/orders"> Cancel</a>
     </div>
 <%- include('../partials/footer') %>

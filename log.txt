@@ -1,0 +1,100 @@
+2019-02-28T23:04:35.330588+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/dishes" host=dish-of-the-day.herokuapp.com request_id=a43a91a7-2271-4bc5-9743-7d62ff420c98 fwd="63.65.120.22" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:04:35.333089+00:00 app[web.1]: [0mGET /dishes [0m- [0m- ms - -[0m
+2019-02-28T23:04:37.308816+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/users" host=dish-of-the-day.herokuapp.com request_id=5a6df98a-34dd-4c21-b3a6-5e3a4b52a951 fwd="63.65.120.22" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:04:37.304977+00:00 app[web.1]: [0mGET /users [0m- [0m- ms - -[0m
+2019-02-28T23:04:37.647285+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m1.412 ms - 41[0m
+2019-02-28T23:04:37.647787+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=dish-of-the-day.herokuapp.com request_id=0b3874c6-a9ec-4335-82a9-ec224ba74b90 fwd="63.65.120.22" dyno=web.1 connect=1ms service=10ms status=404 bytes=248 protocol=https
+2019-02-28T23:05:46.486676+00:00 heroku[web.1]: Restarting
+2019-02-28T23:05:46.495476+00:00 heroku[web.1]: State changed from up to starting
+2019-02-28T23:05:47.501704+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-02-28T23:05:47.599108+00:00 heroku[web.1]: Process exited with status 143
+2019-02-28T23:05:49.170350+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-02-28T23:05:33.000000+00:00 app[api]: Build started by user salvador.navarro@gmail.com
+2019-02-28T23:05:51.663469+00:00 app[web.1]: 
+2019-02-28T23:05:51.663489+00:00 app[web.1]: > dish-of-the-day@0.0.0 start /app
+2019-02-28T23:05:51.663492+00:00 app[web.1]: > node ./bin/www
+2019-02-28T23:05:51.663493+00:00 app[web.1]: 
+2019-02-28T23:05:52.970584+00:00 heroku[web.1]: State changed from starting to up
+2019-02-28T23:05:52.729281+00:00 app[web.1]: Warning: connect.session() MemoryStore is not
+2019-02-28T23:05:52.729327+00:00 app[web.1]: designed for a production environment, as it will leak
+2019-02-28T23:05:52.729329+00:00 app[web.1]: memory, and will not scale past a single process.
+2019-02-28T23:05:52.966548+00:00 app[web.1]: (node:23) UnhandledPromiseRejectionWarning: MongoNetworkError: connection 5 to cluster0-shard-00-01-mfrid.mongodb.net:27017 closed
+2019-02-28T23:05:52.966551+00:00 app[web.1]: at TLSSocket.<anonymous> (/app/node_modules/mongodb-core/lib/connection/connection.js:276:9)
+2019-02-28T23:05:52.966554+00:00 app[web.1]: at Object.onceWrapper (events.js:277:13)
+2019-02-28T23:05:52.966555+00:00 app[web.1]: at TLSSocket.emit (events.js:194:15)
+2019-02-28T23:05:52.966557+00:00 app[web.1]: at _handle.close (net.js:600:12)
+2019-02-28T23:05:52.966558+00:00 app[web.1]: at TCP.done (_tls_wrap.js:388:7)
+2019-02-28T23:05:52.966672+00:00 app[web.1]: (node:23) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+2019-02-28T23:05:52.966780+00:00 app[web.1]: (node:23) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2019-02-28T23:05:46.025055+00:00 app[api]: Release v9 created by user salvador.navarro@gmail.com
+2019-02-28T23:05:46.025055+00:00 app[api]: Deploy b7105de2 by user salvador.navarro@gmail.com
+2019-02-28T23:05:46.000000+00:00 app[api]: Build succeeded
+2019-02-28T23:06:44.297809+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/users" host=dish-of-the-day.herokuapp.com request_id=ee9194d8-ef08-4603-b420-14f80c3db26e fwd="63.65.120.22" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:06:44.301989+00:00 app[web.1]: [0mGET /users [0m- [0m- ms - -[0m
+2019-02-28T23:06:45.221916+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=dish-of-the-day.herokuapp.com request_id=bd14d088-a86b-4a69-a9ff-4e5e104fd41e fwd="63.65.120.22" dyno=web.1 connect=1ms service=28ms status=404 bytes=372 protocol=https
+2019-02-28T23:06:45.222014+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m19.474 ms - 41[0m
+2019-02-28T23:39:07.937700+00:00 heroku[web.1]: Idling
+2019-02-28T23:39:07.941658+00:00 heroku[web.1]: State changed from up to down
+2019-02-28T23:39:08.946672+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2019-02-28T23:39:09.067450+00:00 heroku[web.1]: Process exited with status 143
+2019-02-28T23:41:10.162980+00:00 heroku[web.1]: Unidling
+2019-02-28T23:41:10.183418+00:00 heroku[web.1]: State changed from down to starting
+2019-02-28T23:41:13.774904+00:00 heroku[web.1]: Starting process with command `npm start`
+2019-02-28T23:41:17.518192+00:00 app[web.1]: 
+2019-02-28T23:41:17.518218+00:00 app[web.1]: > dish-of-the-day@0.0.0 start /app
+2019-02-28T23:41:17.518220+00:00 app[web.1]: > node ./bin/www
+2019-02-28T23:41:17.518221+00:00 app[web.1]: 
+2019-02-28T23:41:18.155436+00:00 app[web.1]: Warning: connect.session() MemoryStore is not
+2019-02-28T23:41:18.155466+00:00 app[web.1]: designed for a production environment, as it will leak
+2019-02-28T23:41:18.155468+00:00 app[web.1]: memory, and will not scale past a single process.
+2019-02-28T23:41:18.357213+00:00 app[web.1]: (node:23) UnhandledPromiseRejectionWarning: MongoNetworkError: connection 3 to cluster0-shard-00-02-mfrid.mongodb.net:27017 closed
+2019-02-28T23:41:18.357218+00:00 app[web.1]: at TLSSocket.<anonymous> (/app/node_modules/mongodb-core/lib/connection/connection.js:276:9)
+2019-02-28T23:41:18.357220+00:00 app[web.1]: at Object.onceWrapper (events.js:277:13)
+2019-02-28T23:41:18.357222+00:00 app[web.1]: at TLSSocket.emit (events.js:194:15)
+2019-02-28T23:41:18.357226+00:00 app[web.1]: at _handle.close (net.js:600:12)
+2019-02-28T23:41:18.357228+00:00 app[web.1]: at TCP.done (_tls_wrap.js:388:7)
+2019-02-28T23:41:18.357283+00:00 app[web.1]: (node:23) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+2019-02-28T23:41:18.357351+00:00 app[web.1]: (node:23) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2019-02-28T23:41:18.834543+00:00 heroku[web.1]: State changed from starting to up
+2019-02-28T23:41:20.319373+00:00 heroku[router]: at=info method=GET path="/" host=dish-of-the-day.herokuapp.com request_id=354c861c-e491-4bb3-ad59-1761992d4624 fwd="63.65.120.22" dyno=web.1 connect=1ms service=42ms status=200 bytes=1464 protocol=https
+2019-02-28T23:41:20.322304+00:00 app[web.1]: [0mGET / [32m200 [0m28.781 ms - 1135[0m
+2019-02-28T23:41:20.326326+00:00 app[web.1]: [0mGET /stylesheets/style.css [32m200 [0m28.147 ms - 2608[0m
+2019-02-28T23:41:20.414659+00:00 app[web.1]: [0mGET /stylesheets/style.css [32m200 [0m1.377 ms - 2608[0m
+2019-02-28T23:41:20.324285+00:00 heroku[router]: at=info method=GET path="/stylesheets/style.css" host=dish-of-the-day.herokuapp.com request_id=2ab2f0b7-7089-4c56-bad9-1d760b8b9dcc fwd="63.65.120.22" dyno=web.1 connect=1ms service=33ms status=200 bytes=3022 protocol=https
+2019-02-28T23:41:20.413012+00:00 heroku[router]: at=info method=GET path="/stylesheets/style.css" host=dish-of-the-day.herokuapp.com request_id=382ac210-3dbe-4613-9c5a-5d4460599aa2 fwd="63.65.120.22" dyno=web.1 connect=0ms service=2ms status=200 bytes=2896 protocol=https
+2019-02-28T23:43:39.727860+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/users" host=dish-of-the-day.herokuapp.com request_id=2baee091-38b4-42a5-b0e0-163ed84bba0c fwd="63.65.120.22" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:43:39.731649+00:00 app[web.1]: [0mGET /users [0m- [0m- ms - -[0m
+2019-02-28T23:47:50.299821+00:00 app[web.1]: [0mGET / [32m200 [0m2.405 ms - 1135[0m
+2019-02-28T23:47:50.394086+00:00 app[web.1]: [0mGET /stylesheets/style.css [32m200 [0m1.389 ms - 2608[0m
+2019-02-28T23:47:50.299049+00:00 heroku[router]: at=info method=GET path="/" host=dish-of-the-day.herokuapp.com request_id=f3ef4a96-53c5-46eb-a894-04d6a0e5ece6 fwd="63.65.120.22" dyno=web.1 connect=1ms service=4ms status=200 bytes=1464 protocol=https
+2019-02-28T23:47:50.392851+00:00 heroku[router]: at=info method=GET path="/stylesheets/style.css" host=dish-of-the-day.herokuapp.com request_id=d2fb352b-efbc-4262-8e26-f1312d390c92 fwd="63.65.120.22" dyno=web.1 connect=0ms service=3ms status=200 bytes=2896 protocol=https
+2019-02-28T23:48:00.017249+00:00 heroku[router]: at=info method=GET path="/" host=dish-of-the-day.herokuapp.com request_id=36b6298d-7444-452f-b4c7-c2e8a202f790 fwd="52.90.185.129" dyno=web.1 connect=0ms service=2ms status=200 bytes=1468 protocol=https
+2019-02-28T23:48:00.017868+00:00 app[web.1]: [0mGET / [32m200 [0m0.962 ms - 1135[0m
+2019-02-28T23:48:00.058495+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m2.442 ms - 41[0m
+2019-02-28T23:48:00.057538+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=dish-of-the-day.herokuapp.com request_id=021af7f6-1eea-4ffc-bbe7-4057e3cb73b3 fwd="18.234.40.193" dyno=web.1 connect=1ms service=4ms status=404 bytes=374 protocol=https
+2019-02-28T23:48:10.237460+00:00 heroku[router]: at=info method=GET path="/auth/google" host=dish-of-the-day.herokuapp.com request_id=a11cdc96-3b3d-49cd-a5bc-956071f153f8 fwd="63.65.120.22" dyno=web.1 connect=1ms service=3ms status=302 bytes=374 protocol=https
+2019-02-28T23:48:10.237548+00:00 app[web.1]: [0mGET /auth/google [36m302 [0m1.820 ms - 0[0m
+2019-02-28T23:48:18.954689+00:00 heroku[router]: at=info method=GET path="/auth/google" host=dish-of-the-day.herokuapp.com request_id=2a9c30ad-51f1-4f97-900d-d33fba6206a6 fwd="63.65.120.22" dyno=web.1 connect=0ms service=3ms status=302 bytes=374 protocol=https
+2019-02-28T23:48:18.955499+00:00 app[web.1]: [0mGET /auth/google [36m302 [0m1.248 ms - 0[0m
+2019-02-28T23:48:20.899279+00:00 heroku[router]: at=info method=GET path="/" host=dish-of-the-day.herokuapp.com request_id=ccf3ea20-dd8c-4ba4-bbf2-918dd7a252ab fwd="135.84.167.43" dyno=web.1 connect=1ms service=6ms status=200 bytes=1466 protocol=https
+2019-02-28T23:48:20.899751+00:00 app[web.1]: [0mGET / [32m200 [0m1.273 ms - 1135[0m
+2019-02-28T23:48:21.006586+00:00 app[web.1]: [0mGET /stylesheets/style.css [32m200 [0m2.041 ms - 2608[0m
+2019-02-28T23:48:21.005737+00:00 heroku[router]: at=info method=GET path="/stylesheets/style.css" host=dish-of-the-day.herokuapp.com request_id=3bd888fe-eff2-44c2-9d79-244b670dbb98 fwd="135.84.167.43" dyno=web.1 connect=2ms service=5ms status=200 bytes=2896 protocol=https
+2019-02-28T23:48:21.503960+00:00 app[web.1]: [0mGET /favicon.ico [33m404 [0m5.848 ms - 41[0m
+2019-02-28T23:48:21.503581+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=dish-of-the-day.herokuapp.com request_id=8d62ef38-3958-44da-ae94-aafa99fdfe4c fwd="135.84.167.43" dyno=web.1 connect=2ms service=11ms status=404 bytes=248 protocol=https
+2019-02-28T23:48:24.818863+00:00 app[web.1]: [0mGET /auth/google [36m302 [0m1.060 ms - 0[0m
+2019-02-28T23:48:24.818301+00:00 heroku[router]: at=info method=GET path="/auth/google" host=dish-of-the-day.herokuapp.com request_id=606620ed-4326-41b6-9e1a-3f9f4ce3e958 fwd="135.84.167.43" dyno=web.1 connect=1ms service=3ms status=302 bytes=374 protocol=https
+2019-02-28T23:48:36.255470+00:00 app[web.1]: [0mGET /users [0m- [0m- ms - -[0m
+2019-02-28T23:48:36.252546+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/users" host=dish-of-the-day.herokuapp.com request_id=92ba28a1-d650-4195-b10c-ed0dae40cbdb fwd="63.65.120.22" dyno=web.1 connect=1ms service=30001ms status=503 bytes=0 protocol=https
+2019-02-28T23:48:40.879366+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/oauth2callback?code=4/AAFyeFlH2ZJSMKwkYGNmjmXoZ9c7fdF26IG5SjFo6vUTXetlY_Tv4U_jKrdD2mI4J4llwxouPlZ4USK6SyXrmDc&scope=email+profile+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email" host=dish-of-the-day.herokuapp.com request_id=82f0d26e-a42c-4822-9e94-df715c8e966c fwd="63.65.120.22" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:48:40.881141+00:00 app[web.1]: [0mGET /oauth2callback?code=4/AAFyeFlH2ZJSMKwkYGNmjmXoZ9c7fdF26IG5SjFo6vUTXetlY_Tv4U_jKrdD2mI4J4llwxouPlZ4USK6SyXrmDc&scope=email+profile+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email [0m- [0m- ms - -[0m
+2019-02-28T23:48:49.398961+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/oauth2callback?code=4/AAEdHMkwmBkMvWHtqgrFdRRg4Iz-q1UC6mEa4ShN_OGYv3VXBffuoJclGV-M6uzuWW_-lubVzsuHVIE1qs6466w&scope=email+profile+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email" host=dish-of-the-day.herokuapp.com request_id=f2fe70be-1761-4cb7-888c-f9fa5592e22b fwd="63.65.120.22" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:48:49.401594+00:00 app[web.1]: [0mGET /oauth2callback?code=4/AAEdHMkwmBkMvWHtqgrFdRRg4Iz-q1UC6mEa4ShN_OGYv3VXBffuoJclGV-M6uzuWW_-lubVzsuHVIE1qs6466w&scope=email+profile+https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email [0m- [0m- ms - -[0m
+2019-02-28T23:48:58.074178+00:00 app[web.1]: [0mGET /oauth2callback?code=4/AAHE-ZWBLpTyKRlPbQf-3waI6vZXdmtiaB9MBIhy0B6AO3RHy2MGgikjI_ee3GBKQ3cEKUCt0MHetkBxkb3Y9Lg&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email [0m- [0m- ms - -[0m
+2019-02-28T23:48:58.071782+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/oauth2callback?code=4/AAHE-ZWBLpTyKRlPbQf-3waI6vZXdmtiaB9MBIhy0B6AO3RHy2MGgikjI_ee3GBKQ3cEKUCt0MHetkBxkb3Y9Lg&scope=email%20profile%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email" host=dish-of-the-day.herokuapp.com request_id=a58e4e61-1da6-4a66-b0c5-725f873c37bd fwd="135.84.167.43" dyno=web.1 connect=0ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:49:23.990911+00:00 heroku[router]: at=info method=GET path="/" host=dish-of-the-day.herokuapp.com request_id=a8e3eb69-2fa3-47b7-b26b-2ee62b5eba8a fwd="63.65.120.22" dyno=web.1 connect=0ms service=2ms status=304 bytes=151 protocol=https
+2019-02-28T23:49:23.992345+00:00 app[web.1]: [0mGET / [36m304 [0m1.190 ms - -[0m
+2019-02-28T23:49:24.070809+00:00 app[web.1]: [0mGET /stylesheets/style.css [36m304 [0m1.099 ms - -[0m
+2019-02-28T23:49:24.069470+00:00 heroku[router]: at=info method=GET path="/stylesheets/style.css" host=dish-of-the-day.herokuapp.com request_id=11508489-4a69-443e-93ba-505fbe8b2c42 fwd="63.65.120.22" dyno=web.1 connect=0ms service=2ms status=304 bytes=237 protocol=https
+2019-02-28T23:49:55.402486+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/users" host=dish-of-the-day.herokuapp.com request_id=10b91def-e378-4e50-877f-93cbabdeede0 fwd="63.65.120.22" dyno=web.1 connect=1ms service=30000ms status=503 bytes=0 protocol=https
+2019-02-28T23:49:55.405298+00:00 app[web.1]: [0mGET /users [0m- [0m- ms - -[0m

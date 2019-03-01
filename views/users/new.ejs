@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>New User</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>New User</div>
+    </div>     
     <div class="addNewUser">
         <form action="/users" method="POST">
             <div class = "user-details">
@@ -74,7 +76,7 @@
                     <option value="WY">Wyoming</option>
                 </select>
                 <div>City:</div>
-                <input type="text" name="city" required>
+                <input type="text" name="city" required><br>
                 <input id="addUserButton" type="submit" value="Add User">
             </div>
         </form>

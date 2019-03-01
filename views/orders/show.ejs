@@ -1,12 +1,14 @@
-<%- include('../partials/header') %>    
-<h1>Orders details</h1>
+<%- include('../partials/header') %>  
+<div class="allUDO">
+    <div>Order details</div>
+</div>  
     <div class="detailOrder">
         <%- include('../partials/dish') %>
             <div class="allOrders">
             <div class="order-details">
                 <div>Quantity: <%= order.quantity %></div>
                 <div>Pickup time: <%= pickup_time %></div>
-                <div>Allergies: <%= order.allergies %></div>
+                <div>Allergies: <%= order.allergies %></div><br>
             </div>
             <div class="quick-nav-links">
                 <a href="/orders/<%=order._id %>/edit"> edit</a>

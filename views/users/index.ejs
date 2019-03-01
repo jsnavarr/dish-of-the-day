@@ -1,5 +1,8 @@
 <%- include('../partials/header') %>    
-<h1>All Users</h1>
+    <div class="allUDO">
+        <div>All Users</div>
+        <a class="addUserLink" href="/users/new"> new user</a>
+    </div>
     <% if (users.length > 0) { %>
         <% users.forEach(function(user) { %>
             <div class="allUsers">
@@ -91,9 +94,7 @@
         </div>
         <% }); %>
     <% } else { %>
-        <h1>No users registered yet...</h1>
+        <div class="no-data">No users registered yet...</div>
     <% } %>
-    <div class="quick-nav-links">
-        <a href="/users/new"> new user</a>
-    </div>
+
 <%- include('../partials/footer') %>

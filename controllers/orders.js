@@ -94,7 +94,7 @@ function getDateArray(object, key){
 //     res.render('orders/index', { orders, pickup_times});    
 // }
 
-function index(req, res) {
+function index(req, res, next) {
     Order.find({}).sort({pickup_time: 1}).exec(function(err, orders){
         if(err){
             console.log('error trying to get orders')
@@ -108,7 +108,7 @@ function index(req, res) {
     });
 }
 
-function deleteOrder(req, res) {
+function deleteOrder(req, res, next) {
     console.log('trying to delete a order');
     Order.findById(req.params.id, function(err, order) {
         Dish.findById(order.dish_id, function(err, dish) {
@@ -124,7 +124,7 @@ function deleteOrder(req, res) {
     });
 }
 
-function removeOrder(req, res) {
+function removeOrder(req, res, next) {
     console.log('removing order');
     Order.findById(req.params.id, function(err, order) {
         order.delete(function(err, order){
@@ -144,7 +144,7 @@ function removeOrder(req, res) {
     });
 }
 
-function show(req, res) {
+function show(req, res, next) {
     Order.findById(req.params.id, function(err, order) {
         console.log(order);
         if(err){
@@ -165,7 +165,7 @@ function show(req, res) {
     });
 }
 
-function update(req, res) {
+function update(req, res, next) {
     Order.findById(req.params.id, function(err, order) {
         if (err) return res.render('orders');
         order.quantity = req.body.quantity,
@@ -182,7 +182,7 @@ function update(req, res) {
   });
 }
 
-function editOrder(req, res) {
+function editOrder(req, res, next) {
     console.log('trying to edit order');
     Order.findById(req.params.id, function(err, order) {
         if (err) return res.render('orders');
@@ -202,7 +202,7 @@ function editOrder(req, res) {
     });
 }
 
-function create(req, res) {
+function create(req, res, next) {
     var order = new Order({
     quantity: req.body.quantity,
     pickup_time : req.body.pickup_time,
@@ -219,7 +219,7 @@ function create(req, res) {
     });
 }
 
-function newOrder(req, res) {
+function newOrder(req, res, next) {
     console.log(req.params.id);
     Dish.findById(req.params.id, function(err, dish) {
         if(err){

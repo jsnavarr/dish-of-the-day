@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>Delete User</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>Delete User</div>
+    </div>     
     <div class="allUsers">
         <form method="POST" action="/users/<%= user._id %>?_method=DELETE">
             <div class = "user-details">

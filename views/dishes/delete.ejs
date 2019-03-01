@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>Delete Dish</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>Delete Dish</div>
+    </div>    
     <div class="allDishes">
         <form method="POST" action="/dishes/<%= dish._id %>?_method=DELETE">
             <% if(dish.picture){ %>
@@ -16,10 +18,8 @@
                 <div><%= av_date_s %> -></div>
                 <div><%= av_date_e %></div>
                 <div>Total Portions :<%= dish.totalPortions %></div>
-                <div>cooker_id :<%= dish.user_id %></div>
-                <% if (user._id.equals(gUser && gUser._id)) { %>
+                <div>cooker_id :<%= dish.user_id %></div><br>
                 <input id="deleteDishButton" type="submit" value="Delete Dish">
-                <% } %>
             </div>
         </form>
     </div>

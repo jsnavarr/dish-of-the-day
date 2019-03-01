@@ -1,5 +1,10 @@
 <%- include('../partials/header') %>    
-<h1>All Dishes</h1>
+    <div class="allUDO">
+        <div>All Dishes</div>
+        <% if (user) { %>
+            <a class="addDishesLink" href="/dishes/new"> new dish</a>
+        <% } %>
+    </div>
     <% if (dishes.length > 0) { %>
         <% dishes.forEach(function(dish, idx) { %>
             <div class="allDishes">
@@ -17,21 +22,21 @@
                 <div><%= av_date_s[idx] %> -> </div>
                 <div><%= av_date_e[idx] %></div>
                 <div><a>Total Portions: </a><%= dish.totalPortions %></div>
-                <div><a>cooker_id: </a><%= dish.user_id %></div>
+                <div><a>cooker_id: </a><%= dish.user_id %></div><br>
             </div>
             <div class="quick-nav-links">
                 <a href="/dishes/<%=dish._id %>"> details</a>
-                <a href="/dishes/<%=dish._id %>/edit"> edit</a>
-                <a href="/dishes/<%=dish._id %>/delete"> delete</a>
-                <a href="/dishes/<%=dish._id %>/orders/new"> Place Order</a>
+                <% if (user) { %>
+                    <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                    <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                    <a href="/dishes/<%=dish._id %>/orders/new"> Place Order</a>
+                <% } %>                
             </div>
         </div>
         <% }); %>
     </div>
     <% } else { %>
-        <h1>No dishes published yet...</h1>
+        <div class="no-data">No dishes published yet...</div>
     <% } %>
-    <div class="quick-nav-links">
-        <a href="/dishes/new"> new dish</a>
-    </div>
+
 <%- include('../partials/footer') %>

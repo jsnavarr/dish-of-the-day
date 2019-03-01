@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>Dish details</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>Dish details</div>
+    </div>  
     <div class="allDishes">
         <% if(dish.picture){ %>
             <img src="<%= dish.picture %>" height="150" width="150"><br>
@@ -14,30 +16,32 @@
             <div><%= av_date_s %> -> </div>
             <div><%= av_date_e %></div>
             <div>Total Portions: <%= dish.totalPortions %></div>
-            <div>cooker_id: <%= dish.user_id %></div>
+            <div>cooker_id: <%= dish.user_id %></div><br>
         </div>
-        <div class="quick-nav-links">
-                <a href="/dishes/<%=dish._id %>/edit"> edit</a>
-                <a href="/dishes/<%=dish._id %>/delete"> delete</a>
-                <a href="/dishes/<%=dish._id %>/orders/new"> new Order</a>
-            <a href="/dishes"> all dishes </a>
-        </div>
-        <div class = "comments-ratings">
-            <form name="add-comment-form" action="/dishes/<%= dish._id %>/comment" method="POST">
-                <div><textarea rows="3" cols="34" name="text"></textarea></div>
-                <div>Rating: 
-                    <select name="rating">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <input id="addCommentButton" type="submit" value="Add Comment and Rating">
-            </form>
-        </div>
+        <% if (user) { %>
+            <div class="quick-nav-links">
+                    <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                    <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                    <a href="/dishes/<%=dish._id %>/orders/new"> new Order</a>
+                <a href="/dishes"> all dishes </a>
+            </div>
+            <div class = "comments-ratings">
+                <form name="add-comment-form" action="/dishes/<%= dish._id %>/comment" method="POST">
+                    <div><textarea rows="3" cols="34" name="text"></textarea></div>
+                    <div>Rating: 
+                        <select name="rating">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <input id="addCommentButton" type="submit" value="Add Comment and Rating">
+                </form>
+            </div>
+        <% } %>
         <div class="display-all-comments">
             <% if(dish.comments.length) { %>
                 <div class="comment-title">Comments and rating</div>
@@ -49,7 +53,7 @@
                     </div>
                 <% }); %>
             <% } else {%>
-                <h1>No comments added yet</h1>
+                <div class="no-data">No comments added yet</div>
             <% } %>
         </div>
     </div>

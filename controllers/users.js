@@ -12,7 +12,7 @@ module.exports = {
 }
 
 //only the admin can see all users
-function index(req, res) {
+function index(req, res, next) {
     User.find({}).sort({name: 1}).exec(function(err, users){
       // console.log(users);
       res.render('users/index', {
@@ -24,13 +24,13 @@ function index(req, res) {
     });
 }
 
-function deleteUser(req, res) {
+function deleteUser(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     res.render('users/delete', { title: 'delete user', user});
     });
 }
 
-function removeUser(req, res) {
+function removeUser(req, res, next) {
   console.log('trying to remove user');
   User.findById(req.params.id, function(err, user) {
     user.delete(function(err, user){
@@ -50,7 +50,7 @@ function removeUser(req, res) {
   });
 }
 
-function show(req, res) {
+function show(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if(err){
       console.log('error trying to find user');
@@ -61,7 +61,7 @@ function show(req, res) {
   });
 }
 
-function update(req, res) {
+function update(req, res, next) {
   User.findById(req.params.id, function(err, user) {
   user.role = req.body.role;
   user.name = req.body.name;
@@ -80,7 +80,7 @@ function update(req, res) {
   });
 }
 
-function editUser(req, res) {
+function editUser(req, res, next) {
   console.log('trying to edit user');
   User.findById(req.params.id, function(err, user) {
     if (err) return res.render('users');
@@ -88,7 +88,7 @@ function editUser(req, res) {
   });
 }
 
-function create(req, res) {
+function create(req, res, next) {
   var user = new User({
     role: req.body.role,
     name: req.body.name,
@@ -110,6 +110,6 @@ function create(req, res) {
     });
   }
 
-function newUser(req, res) {
-    res.render('users/new');
+function newUser(req, res, next) {
+    res.render('users/new', {user: req.user});
 }

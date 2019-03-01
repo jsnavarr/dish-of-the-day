@@ -1,5 +1,7 @@
-<%- include('../partials/header') %>    
-<h1>New Dish</h1>
+<%- include('../partials/header') %>
+    <div class="allUDO">
+        <div>New Dish</div>
+    </div>      
     <div class="addNewDish">
         <form action="/dishes" method="POST">
             <div class="allDishes">
@@ -19,7 +21,7 @@
                     <div>Total Portions:</div>
                     <input type="number" name="totalPortions" required>
                     <div>Cooker ID:</div>
-                    <input type="text" name="user_id" required>
+                    <input type="text" name="user_id" required><br>
                     <input id="addDishButton" type="submit" value="Add Dish">
                 </div>
             </div>

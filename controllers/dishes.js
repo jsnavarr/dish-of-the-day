@@ -41,7 +41,7 @@ function index(req, res) {
     });
 }
 
-function deleteDish(req, res) {
+function deleteDish(req, res, next) {
     console.log('trying to delete a dish');
     Dish.findById(req.params.id, function(err, dish) {
         var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
@@ -50,7 +50,7 @@ function deleteDish(req, res) {
     });
 }
 
-function removeDish(req, res) {
+function removeDish(req, res, next) {
     console.log('trying to remove dish');
     Dish.findById(req.params.id, function(err, dish) {
         dish.delete(function(err, dish){
@@ -84,7 +84,7 @@ function show(req, res) {
     });
 }
 
-function update(req, res) {
+function update(req, res, next) {
     Dish.findById(req.params.id, function(err, dish) {
         if (err) return res.render('dishes');
         dish.picture = req.body.picture;
@@ -107,7 +107,7 @@ function update(req, res) {
   });
 }
 
-function editDish(req, res) {
+function editDish(req, res, next) {
     console.log('trying to edit dish');
     Dish.findById(req.params.id, function(err, dish) {
         if (err) return res.render('dishes');
@@ -117,7 +117,7 @@ function editDish(req, res) {
     });
 }
 
-function create(req, res) {
+function create(req, res, next) {
     var dish = new Dish({
     picture: req.body.picture,
     description : req.body.description,
@@ -137,6 +137,6 @@ function create(req, res) {
     });
 }
 
-function newDish(req, res) {
+function newDish(req, res, next) {
     res.render('dishes/new', {user: req.user});
 }

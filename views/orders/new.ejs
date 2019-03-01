@@ -1,5 +1,8 @@
 <%- include('../partials/header') %>  
-<h1>New Order</h1>
+<div class="allUDO">
+    <div>New Order</div>
+</div>
+
     <div class="newOrder">
         <form action="/dishes/<%= dish_id %>/orders" method="POST">
             <%- include('../partials/dish') %>
@@ -10,7 +13,7 @@
                     <div>Pickup time:</div>
                     <input type="datetime-local" name="pickup_time" >
                     <div>Allergies:</div>
-                    <input type="text" name="allergies"  >
+                    <input type="text" name="allergies"  ><br>
                     <input id="addOrderButton" type="submit" value="Add Order">
                 </div>
             </div>
