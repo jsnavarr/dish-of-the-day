@@ -1,6 +1,9 @@
 ## dish-of-the-day
 **dish-of-the-day** is the airb&b of home made food. People can publish in advance the dishes they are cooking and customers can order them using the app. Customers will rate the dishes based on their experience.
 
+live version: [Dish of the day](https://dish-of-the-day.herokuapp.com "dish of the day Homepage")
+
+
 ![Welcome](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-welcome.png)
 
 
@@ -99,6 +102,8 @@ User information can be deleted from the database
 	- datetime-local was being added to the database but when trying to set it in HTML when editing a dish availability it was not displayed.
 		- The solution was to use moment (a node.js library) which will format the date to "YYYY-MM-DD:HH:MM" which HTML will accept it.
 	- When OAUTH was implemented the app crashed but no enough information was displayed in order to understand the root of the issue. I talked to Josh in the class and he told me that I had to pass user information to each controller function.
+	- Typos are very hard to find and they usually crash your app. Javascript should inforce that only variables you had declared are being used but since I do not think they will do that then I will create a parser which will help developers to identify potential typos (python project).
+	-  Not a big challenge but was blocking me for hours: using pop instead of push when trying to add an object to an array.
 
 
 ## If I had more time

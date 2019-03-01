@@ -2,7 +2,7 @@
     <div class="allUDO">
         <div>New User</div>
     </div>     
-    <div class="addNewUser">
+    <div class="allUsers">
         <form action="/users" method="POST">
             <div class = "user-details">
                 <div>Role:</div>
@@ -11,9 +11,9 @@
                     <option value="COOKER">COOKER</option>
                 </select>   
                 <div>Name:</div>
-                <input type="text" name="name" required>
+                <input type="text" name="name" value="<%= name %>"required>
                 <div>e-mail:</div>
-                <input type="mail" name="email" required>
+                <input type="mail" name="email" value="<%= email %>" required>
                 <div>Address:</div>
                 <div>Street:</div>
                 <input type="text" name="street" required>

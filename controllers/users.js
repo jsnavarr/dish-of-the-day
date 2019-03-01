@@ -124,5 +124,9 @@ function create(req, res, next) {
 
 function newUser(req, res, next) {
   message="";
-  res.render('users/new', {user: req.user, message});
+  //get the user login information (name, email) and update form with that information
+  var name = req.user.name;
+  var email = req.user.email;
+
+  res.render('users/new', {user: req.user, message, name, email});
 }
