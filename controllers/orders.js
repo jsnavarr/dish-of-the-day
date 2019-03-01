@@ -1,7 +1,7 @@
 var Order = require('../models/order');
 var Dish = require('../models/dish');
 var moment = require('moment');
-
+var message = "";
 module.exports = {
     new: newOrder, //render the new order view
     create, //save the data from the view to the database
@@ -95,48 +95,53 @@ function getDateArray(object, key){
 // }
 
 function index(req, res, next) {
+    message="";
     Order.find({}).sort({pickup_time: 1}).exec(function(err, orders){
         if(err){
             console.log('error trying to get orders')
+            message="error trying to get orders";
         } else {
             console.log(orders);
             var pickup_times = getDateArray(orders, 'pickup_time');
             // var dishes = getDishesFromOrders(orders);
             // console.log('dishes xxx '+dishes);
-            res.render('orders/index', { orders, pickup_times, user: req.user});
+            res.render('orders/index', { orders, pickup_times, user: req.user, message});
         }
     });
 }
 
 function deleteOrder(req, res, next) {
+    message="";
     console.log('trying to delete a order');
     Order.findById(req.params.id, function(err, order) {
         Dish.findById(order.dish_id, function(err, dish) {
             if(err){
                 console.log('error trying to find a dish');
+                message="error trying to find a dish";
             } else {
                 var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");
                 var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss"); 
                 var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD")+" @"+moment(order.pickup_time).format("HH:mm:ss");
-                res.render('orders/delete', { title: 'delete order', order, pickup_time, dish, av_date_s, av_date_e, user: req.user});
+                res.render('orders/delete', { title: 'delete order', order, pickup_time, dish, av_date_s, av_date_e, user: req.user, message});
             }
         });      
     });
 }
 
 function removeOrder(req, res, next) {
+    message="";
     console.log('removing order');
     Order.findById(req.params.id, function(err, order) {
         order.delete(function(err, order){
             if(err){
-                console.log('error deleting order')
+                console.log('error deleting order');
             } else {
                 Order.find({}).sort({pickup_time: 1}).exec(function(err, orders){
                     console.log(orders);
                     if(err){
-                        console.log('error finding all orders')
+                        console.log('error finding all orders');
                     } else {    
-                        res.redirect('/orders'/*, { title: 'all orders', orders}*/);
+                        res.redirect('/orders', {message});
                     }
                 });
             }
@@ -145,20 +150,23 @@ function removeOrder(req, res, next) {
 }
 
 function show(req, res, next) {
+    message="";
     Order.findById(req.params.id, function(err, order) {
         console.log(order);
         if(err){
             console.log('error trying to find order');
+            message="error trying to find order";
         } else {
             console.log(order);
             Dish.findById(order.dish_id, function(err, dish) {
                 if(err){
                     console.log('error trying to find a dish');
+                    message="error trying to find a dish";
                 } else {
                     var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");
                     var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss"); 
                     var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD")+" @"+moment(order.pickup_time).format("HH:mm:ss");
-                    res.render('orders/show', { title: 'order details', order, pickup_time, dish, av_date_s, av_date_e, user: req.user});
+                    res.render('orders/show', { title: 'order details', order, pickup_time, dish, av_date_s, av_date_e, user: req.user, message});
                 }
             });
         } 
@@ -166,8 +174,9 @@ function show(req, res, next) {
 }
 
 function update(req, res, next) {
+    message="";
     Order.findById(req.params.id, function(err, order) {
-        if (err) return res.render('orders');
+        if (err) return res.render('orders', {message});
         order.quantity = req.body.quantity,
         order.pickup_time = req.body.pickup_time,
         order.allergies = req.body.allergies,
@@ -175,17 +184,19 @@ function update(req, res, next) {
         //cooker should not be allowed to update order.cooker
         order.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('orders');
+        if (err) return res.render('orders', {message});
         // for now, redirect right back to new.ejs
-        res.redirect('/orders');
+        message="order updated";
+        res.redirect('/orders', {message});
     });
   });
 }
 
 function editOrder(req, res, next) {
+    message="";
     console.log('trying to edit order');
     Order.findById(req.params.id, function(err, order) {
-        if (err) return res.render('orders');
+        if (err) return res.render('orders', {message});
         var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD[T]HH:mm:ss");
         console.log(pickup_time);
         console.log(order);
@@ -193,41 +204,60 @@ function editOrder(req, res, next) {
         Dish.findById(order.dish_id, function(err, dish) {
             if(err){
                 console.log('error trying to find a dish');
+                message="error trying to find a dish";
             } else {
                 var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
                 var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;    
-                res.render('orders/edit', {title: 'edit order', order, pickup_time, dish, av_date_s, av_date_e,user: req.user});
+                res.render('orders/edit', {title: 'edit order', order, pickup_time, dish, av_date_s, av_date_e,user: req.user, message});
             }
         });
     });
 }
 
 function create(req, res, next) {
+    message="";
     var order = new Order({
     quantity: req.body.quantity,
     pickup_time : req.body.pickup_time,
     allergies : req.body.allergies,
     dish_id: req.params.id
     });
-    console.log(order);
-    console.log(req.body);
-    order.save(function(err) {
-        // one way to handle errors
-        if (err) return res.render('orders/new');
-        // for now, redirect right back to new.ejs
-        res.redirect('/orders');
+    // console.log(order);
+    // console.log(req.body);
+    //verify that pickup_date is within dish availability
+    Dish.findById(order.dish_id, function(err, dish) {
+        if(err){
+            console.log('error placing an order');
+            message="error placing an order";
+        } else if(order.pickup_time >= dish.availability_start && order.pickup_time <=dish.availability_end)
+        {
+            order.save(function(err) {
+                // one way to handle errors
+                if (err) return res.render('orders/new', {message});
+                // for now, redirect right back to new.ejs
+                message = "order created";
+                res.redirect('/orders/'+order._id, {message});
+            });
+        } else {
+            console.log('the pickup time is not within dish availability timeslot');
+            message = "the pickup time is not within dish availability timeslot";
+            res.redirect('/dishes', {message});
+        }
     });
 }
 
 function newOrder(req, res, next) {
+    message="";
     console.log(req.params.id);
     Dish.findById(req.params.id, function(err, dish) {
         if(err){
             console.log('error placing an order');
+            message="error placing an order";
         } else {
-            var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
-            var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;    
-            res.render('orders/new', {dish_id: req.params.id, dish, av_date_s, av_date_e, user: req.user});
+            var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");
+            var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss"); 
+            var pickup_time = moment(dish.availability_start).format("YYYY-MM-DD[T]HH:mm:ss");
+            res.render('orders/new', {dish_id: req.params.id, dish, av_date_s, av_date_e, pickup_time, user: req.user, message});
         }
     });
 }

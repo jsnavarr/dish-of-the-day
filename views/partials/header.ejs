@@ -29,3 +29,8 @@
         <a href="/orders"> Orders</a>
     </nav>
     <main>
+        <% if (message) { %>
+            <div class = "message">
+                <div><%= message %></div>
+            </div>
+        <% } %>

@@ -2,9 +2,15 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+var message = "";
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', user: req.user});
+  if (!req.isAuthenticated()){
+    message = "all functionality will be enabled once you log in";
+  } else {
+    message = "Welcome "+req.user.name;
+  }
+  res.render('index', { title: 'Express', user: req.user, message});
 });
 
 router.get('/auth/google', passport.authenticate(

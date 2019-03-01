@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
     <div class="allUDO">
         <div>Dish details</div>
-    </div>  
+    </div>
     <div class="allDishes">
         <% if(dish.picture){ %>
             <img src="<%= dish.picture %>" height="150" width="150"><br>
@@ -16,7 +16,11 @@
             <div><%= av_date_s %> -> </div>
             <div><%= av_date_e %></div>
             <div>Total Portions: <%= dish.totalPortions %></div>
-            <div>cooker_id: <%= dish.user_id %></div><br>
+            <div>cooker_id: <%= dish.user_id %></div>
+            <% if(rating) { %>
+                <div>Rating: <%= rating %></div>
+            <% } %>
+            <br>
         </div>
         <% if (user) { %>
             <div class="quick-nav-links">

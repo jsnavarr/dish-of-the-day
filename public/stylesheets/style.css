@@ -1,3 +1,14 @@
+.message {
+  margin: 3px 0px 10px 0px;
+  font-family: helvetica;
+  color:black;
+  background: yellow;
+  font-size: 16px;
+  padding: 5px;
+  border: solid 1px gray;
+  border-radius: 0 0 10px 10px;
+}
+
 /* styling for the welcome page */
 #welcome {
   font-size: 40px;
@@ -11,6 +22,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .welcome-text{
@@ -22,6 +34,7 @@
 
 /* styling for the login bar */
 .login {
+  margin: 3px auto;
   display: flex;
   background: bisque;
   flex-direction: row;
@@ -92,7 +105,7 @@ a {
 .allDishes, .allOrders, .allUsers {
   background: bisque;
   padding: 10px 0px 0px 0px;
-  margin: 30px 0px;
+  margin: 10px 0px;
   border-radius: 10px 10px 0 0;
 }
 

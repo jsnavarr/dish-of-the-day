@@ -2,6 +2,7 @@ var Dish = require('../models/dish');
 var Order = require('../models/order');
 var moment = require('moment');
 
+var message = "";
 function getDateArray(object, key){
     var a = [];
     if(object){
@@ -33,36 +34,41 @@ function isLoggedIn(req, res, next) {
 }
 
 function index(req, res) {
+    message="";
     Dish.find({}).sort({price: 1}).exec(function(err, dishes){
         console.log(dishes);
         var av_date_s = getDateArray(dishes, 'availability_start');
         var av_date_e = getDateArray(dishes, 'availability_end');
-        res.render('dishes/index', { dishes, av_date_s, av_date_e, user: req.user});
+        res.render('dishes/index', { dishes, av_date_s, av_date_e, message, user: req.user});
     });
 }
 
 function deleteDish(req, res, next) {
     console.log('trying to delete a dish');
+    message="";
     Dish.findById(req.params.id, function(err, dish) {
         var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
         var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;
-        res.render('dishes/delete', { title: 'delete dish', dish, av_date_s, av_date_e, user: req.user});
+        res.render('dishes/delete', { title: 'delete dish', dish, av_date_s, av_date_e, user: req.user, message});
     });
 }
 
 function removeDish(req, res, next) {
+    message="";
     console.log('trying to remove dish');
     Dish.findById(req.params.id, function(err, dish) {
         dish.delete(function(err, dish){
             if(err){
-                console.log('error deleting dish')
+                console.log('error deleting dish');
+                message='error deleting dish';
             } else {
                 Dish.find({}).sort({name: 1}).exec(function(err, dishes){
                     console.log(dishes);
                     if(err){
                         console.log('error finding all dishes')
-                    } else {    
-                        res.redirect('/dishes');
+                    } else {
+                        message="dish deleted";
+                        res.redirect('/dishes', {message});
                     }
                 });
             }
@@ -71,22 +77,38 @@ function removeDish(req, res, next) {
 }
 
 function show(req, res) {
+    message="";
     Dish.findById(req.params.id, function(err, dish) {
         console.log(dish);
         if(err){
             console.log('error trying to find dish');
         } else {
-        console.log(dish);
         var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD")+" @"+ moment(dish.availability_start).format("HH:mm:ss");;
         var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD")+ " @"+moment(dish.availability_end).format("HH:mm:ss");;
-        res.render('dishes/show', { title: 'dish details', dish, av_date_s, av_date_e, user: req.user});
+
+        // calculate the rating
+        var rating = null;
+        console.log('length '+dish.comments.length);
+        if(dish.comments.lenght>0){
+            console.log('calculating rating');
+            var sum = 0;
+            var count = 0;
+            dish.comments.forEach(function(d){
+                sum+=dish.comments.rating;
+                count++;
+            });
+            var rating = parseInt(Math.floor(sum/count));
+            console.log('rating '+rating);
+        }
+        res.render('dishes/show', { title: 'dish details', dish, av_date_s, av_date_e, rating, message, user: req.user, message});
         } 
     });
 }
 
 function update(req, res, next) {
+    message="";
     Dish.findById(req.params.id, function(err, dish) {
-        if (err) return res.render('dishes');
+        if (err) return res.render('dishes', {message});
         dish.picture = req.body.picture;
         dish.description = req.body.description;
         dish.type = req.body.type;
@@ -100,24 +122,27 @@ function update(req, res, next) {
         //cooker should not be allowed to update dish.cooker
         dish.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('dishes');
+        if (err) return res.render('dishes', {message});
         // for now, redirect right back to new.ejs
-        res.redirect('/dishes');
+        message='dish updated';
+        res.redirect('/dishes', {message});
     });
   });
 }
 
 function editDish(req, res, next) {
+    message="";
     console.log('trying to edit dish');
     Dish.findById(req.params.id, function(err, dish) {
-        if (err) return res.render('dishes');
+        if (err) return res.render('dishes', {message});
         var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD[T]HH:mm:ss");
         var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD[T]HH:mm:ss");
-        res.render('dishes/edit', {title: 'edit dish', dish, av_date_s, av_date_e, user: req.user});
+        res.render('dishes/edit', {title: 'edit dish', dish, av_date_s, av_date_e, user: req.user, message});
     });
 }
 
 function create(req, res, next) {
+    message="";
     var dish = new Dish({
     picture: req.body.picture,
     description : req.body.description,
@@ -131,12 +156,13 @@ function create(req, res, next) {
     console.log(req.body);
     dish.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('dishes/new');
+        if (err) return res.render('dishes/new', {message});
         // for now, redirect right back to new.ejs
-        res.redirect('/dishes');
+        res.redirect('/dishes', {message});
     });
 }
 
 function newDish(req, res, next) {
-    res.render('dishes/new', {user: req.user});
+    message="";
+    res.render('dishes/new', {user: req.user, message});
 }

@@ -12,3 +12,5 @@ Sellers will publish their dishes (picture, description, price and a window of t
 
 
 
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
