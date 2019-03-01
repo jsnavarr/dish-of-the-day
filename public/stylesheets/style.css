@@ -28,20 +28,20 @@
   justify-content: flex-end;
 }
 
-.login a, .login i {
+.login a {
   display: flex;
-  padding: 10px 10px 0px 0px;
+  padding: 10px 10px 5px 0px;
   color: blue;
   font-size: 20px;
   font-weight: 600;
   text-decoration: none;
 }
 
-.login a:hover, .login i:hover {
+.login a:hover {
   color: white;
   background:chocolate;
   border-radius: 10px;
-  padding: 10px 10px 0px 10px;
+  padding: 10px 10px 5px 10px;
 }
 
 

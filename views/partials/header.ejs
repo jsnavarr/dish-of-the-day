@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Google Icon Fonts used by Materialize -->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <!-- Materialize CSS Framework -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -17,9 +17,9 @@
             <!-- <div> -->
             <% if (user) { %>
                 <!-- <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a> -->
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+                <a href="/logout">Log Out</a>
             <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                <a href="/auth/google">Login with Google</a>
             <% } %>
             <!-- </li> -->
         </div>
