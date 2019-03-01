@@ -141,7 +141,7 @@ function removeOrder(req, res, next) {
                     if(err){
                         console.log('error finding all orders');
                     } else {    
-                        res.redirect('/orders', {message});
+                        res.redirect('/orders');
                     }
                 });
             }
@@ -176,7 +176,7 @@ function show(req, res, next) {
 function update(req, res, next) {
     message="";
     Order.findById(req.params.id, function(err, order) {
-        if (err) return res.render('orders', {message});
+        if (err) return res.render('orders', {message, user: req.user});
         order.quantity = req.body.quantity,
         order.pickup_time = req.body.pickup_time,
         order.allergies = req.body.allergies,
@@ -184,10 +184,10 @@ function update(req, res, next) {
         //cooker should not be allowed to update order.cooker
         order.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('orders', {message});
+        if (err) return res.render('orders', {message,user: req.user});
         // for now, redirect right back to new.ejs
         message="order updated";
-        res.redirect('/orders', {message});
+        res.redirect('/orders');
     });
   });
 }
@@ -215,6 +215,7 @@ function editOrder(req, res, next) {
 }
 
 function create(req, res, next) {
+    console.log('trying to add new order');
     message="";
     var order = new Order({
     quantity: req.body.quantity,
@@ -233,15 +234,16 @@ function create(req, res, next) {
         {
             order.save(function(err) {
                 // one way to handle errors
-                if (err) return res.render('orders/new', {message});
+                if (err) return res.render('orders/new', {message, user: req.user});
                 // for now, redirect right back to new.ejs
                 message = "order created";
-                res.redirect('/orders/'+order._id, {message});
+                console.log(message+order._id);
+                res.redirect('/orders');
             });
         } else {
             console.log('the pickup time is not within dish availability timeslot');
             message = "the pickup time is not within dish availability timeslot";
-            res.redirect('/dishes', {message});
+            res.redirect('/dishes');
         }
     });
 }

@@ -68,7 +68,7 @@ function removeDish(req, res, next) {
                         console.log('error finding all dishes')
                     } else {
                         message="dish deleted";
-                        res.redirect('/dishes', {message});
+                        res.redirect('/dishes');
                     }
                 });
             }
@@ -125,7 +125,7 @@ function update(req, res, next) {
         if (err) return res.render('dishes', {message});
         // for now, redirect right back to new.ejs
         message='dish updated';
-        res.redirect('/dishes', {message});
+        res.redirect('/dishes');
     });
   });
 }
@@ -158,7 +158,7 @@ function create(req, res, next) {
         // one way to handle errors
         if (err) return res.render('dishes/new', {message});
         // for now, redirect right back to new.ejs
-        res.redirect('/dishes', {message});
+        res.redirect('/dishes');
     });
 }
 

@@ -5,7 +5,7 @@
     <div class="allUsers">
         <div class = "user-details">
             <div>Role:</div>
-            <select name="role">
+            <select name="role" disabled>
                 <option value="CONSUMER" 
                 {% if user.role == "CONSUMER" %} 
                     selected 
@@ -16,18 +16,18 @@
                 {% endif %}>COOKER</option>
             </select>
             <div>Name:</div>
-            <input type="text" name="name" value="<%= user.name %>" required>
+            <input type="text" name="name" value="<%= user.name %>" disabled>
             <div>e-mail:</div>
-            <input type="mail" name="email" value="<%= user.email %>"required>
+            <input type="mail" name="email" value="<%= user.email %>"disabled>
             <div>Address:</div>
             <div>Street:</div>
-            <input type="text" name="street" value="<%= user.street %>"required>
+            <input type="text" name="street" value="<%= user.street %>"disabled>
             <div>Number:</div>
-            <input type="text" name="number" value="<%= user.number %>"required>
+            <input type="text" name="number" value="<%= user.number %>"disabled>
             <div>Zip:</div>
-            <input type="text" name="zip" value="<%= user.zip %>"required>
+            <input type="text" name="zip" value="<%= user.zip %>"disabled>
             <div>State:</div>
-            <select name="state">
+            <select name="state" disabled>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -81,7 +81,7 @@
                 <option value="WY">Wyoming</option>
             </select>
             <div>City:</div>
-            <input type="text" name="city" value="<%= user.city %>"required><br>
+            <input type="text" name="city" value="<%= user.city %>"disabled><br>
         </div>
         <div class="quick-nav-links">
             <a href="/users/<%=user._id %>/edit"> edit </a>

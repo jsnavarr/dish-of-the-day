@@ -20,7 +20,7 @@ Browse dishes: as a customer/cooker I want to be able to browse all dishes.
 
 ## Design
 
-###MVP
+### MVP
 ### Model
 There are 3 main models:
 
@@ -114,5 +114,7 @@ User information can be deleted from the database
 	- Create a map with dishes locations so user can click on them and get the details.
 	- When listing all orders I wanted to show some information of the related dish but had to implement async functions which I could not complete.
 	- I would create a new schema "dish of the day" which will have information of the dish availability and price while "dish" schema would still have picture, type, description, price which will not change and cookers will just add "dish of the day".
+	-  delete dishes and order past time
+	-  
 
 	

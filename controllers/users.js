@@ -49,7 +49,7 @@ function removeUser(req, res, next) {
             console.log('error finding all users');
             message = "error deleting user";
           } else {    
-            res.redirect('/users', {message});
+            res.redirect('/users');
           }
         });
       }
@@ -85,7 +85,7 @@ function update(req, res, next) {
     // one way to handle errors
     if (err) return res.render('users', {message: 'error updating user'});
     // for now, redirect right back to new.ejs
-    res.redirect('/users', {message});
+    res.redirect('/users');
     });
   });
 }
@@ -118,7 +118,7 @@ function create(req, res, next) {
       // one way to handle errors
       if (err) return res.render('users/new', {message: 'error creating user'});
       // for now, redirect right back to new.ejs
-      res.redirect('/users', {message});
+      res.redirect('/users');
     });
   }
 
