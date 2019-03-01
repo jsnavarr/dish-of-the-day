@@ -50,33 +50,42 @@ This is the welcome screen with a message to the user if he has never logged in 
 
 ![Welcome logged in](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishofthedaywelcome2.png)
 
+
 User can browse all dishes, if user is logged in then the "new" button to add a dish and "edit/delete" links will display. 
 
 ![All dishes](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-alldishes.png)
+
 
 When user clicks on "details" then the specific dish will be displayed with a section to add comments/rating.
 
 ![Dish details](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-dishdetails.png)
 
+
 User will see below image after clicking on "edit" link to change dish information related.
 
 ![Edit dish](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-editdish.png)
+
 
 User will be able to delete a dish when logged-in.
 
 ![](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-deletedish.png)
 
 To place an order the user only has to click in the "place order" link at the bottom of the specific dish user wants to order. User will enter quantity and pick up time which must be within dish availability timeslot.
+
 ![Place order](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-neworder.png)
+
 
 User can browse orders and go to its details.
 ![Order details](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-orderdetails.png)
 
+
 To delete an order just click on the "delete" link at the bottom of the order which will take user to a new page to confirm to delete the order
 ![Delete order](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-deleteorder.png)
 
+
 User can update its information when clicking on "edut" at the bottom of the user details.
 ![Edit user](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-editorder.png)
+
 
 User information can be deleted from the database
 ![Delete user](https://github.com/jsnavarr/dish-of-the-day/blob/master/public/images/dishoftheday-deleteuser.png)
