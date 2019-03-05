@@ -176,7 +176,7 @@ function show(req, res, next) {
 function update(req, res, next) {
     message="";
     Order.findById(req.params.id, function(err, order) {
-        if (err) return res.render('orders', {message, user: req.user});
+        if (err) return res.redirect('/orders');
         order.quantity = req.body.quantity,
         order.pickup_time = req.body.pickup_time,
         order.allergies = req.body.allergies,
@@ -184,10 +184,10 @@ function update(req, res, next) {
         //cooker should not be allowed to update order.cooker
         order.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('orders', {message,user: req.user});
+        if (err) return res.redirect('/orders');
         // for now, redirect right back to new.ejs
         message="order updated";
-        res.redirect('/orders');
+        res.redirect('/orders/'+order._id);
     });
   });
 }
@@ -196,7 +196,7 @@ function editOrder(req, res, next) {
     message="";
     console.log('trying to edit order');
     Order.findById(req.params.id, function(err, order) {
-        if (err) return res.render('orders', {message});
+        if (err) return res.redirect('/orders');
         var pickup_time = moment(order.pickup_time).format("YYYY-MM-DD[T]HH:mm:ss");
         console.log(pickup_time);
         console.log(order);
@@ -234,16 +234,16 @@ function create(req, res, next) {
         {
             order.save(function(err) {
                 // one way to handle errors
-                if (err) return res.render('orders/new', {message, user: req.user});
+                if (err) return res.redirect('/orders/new');
                 // for now, redirect right back to new.ejs
                 message = "order created";
                 console.log(message+order._id);
-                res.redirect('/orders');
+                res.redirect('/orders/'+order._id);
             });
         } else {
             console.log('the pickup time is not within dish availability timeslot');
             message = "the pickup time is not within dish availability timeslot";
-            res.redirect('/dishes');
+            res.redirect('/dishes/'+dish._id);
         }
     });
 }

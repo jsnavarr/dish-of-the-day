@@ -11,8 +11,10 @@
                 <div>Allergies: <%= order.allergies %></div><br>
             </div>
             <div class="quick-nav-links">
-                <a href="/orders/<%=order._id %>/edit"> edit</a>
-                <a href="/orders/<%=order._id %>/delete"> delete</a>
+                <% if(user.email == order.user_id){ %> 
+                    <a href="/orders/<%=order._id %>/edit"> edit</a>
+                    <a href="/orders/<%=order._id %>/delete"> delete</a>
+                <% } %>
                 <a href="/dishes/<%=order.dish_id %>"> Go to Dish</a>
             </div>
         </div>

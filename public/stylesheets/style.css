@@ -96,6 +96,16 @@ img {
   display: flex;
 }
 
+/* for the avatar */
+#avatar {
+  width: 40px;
+  height: 40px;
+  border: solid blue 1px;
+  display: flex;
+  margin: 3px 20px;
+  padding: 3px;
+}
+
 /*deafult color for the <a> tags */
 a {
   color: azure;
@@ -184,6 +194,7 @@ a {
 
 textarea {
   font-size: 16px;
+  max-width: 280px;
 }
 
 .comment-title {

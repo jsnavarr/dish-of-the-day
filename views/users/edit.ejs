@@ -8,13 +8,15 @@
                 <div>Role:</div>
                 <select name="role">
                     <option value="CONSUMER" 
-                    {% if user.role == "CONSUMER" %} 
+                    <% if (user.role == "CONSUMER" ) { %> 
                         selected 
-                    {% endif %}>CONSUMER</option>
+                    <% } %>
+                    >CONSUMER</option>
                     <option value="COOKER"
-                    {% if user.role == "COOKER" %} 
+                    <% if (user.role == "COOKER") { %> 
                         selected 
-                    {% endif %}>COOKER</option>
+                    <% } %>
+                    >COOKER</option>
                 </select>
                 <div>Name:</div>
                 <input type="text" name="name" value="<%= user.name %>" disabled>
@@ -22,11 +24,11 @@
                 <input type="mail" name="email" value="<%= user.email %>"disabled>
                 <div>Address:</div>
                 <div>Street:</div>
-                <input type="text" name="street" value="<%= user.street %>"required>
+                <input type="text" name="street" value="<%= user.street %>">
                 <div>Number:</div>
-                <input type="text" name="number" value="<%= user.number %>"required>
+                <input type="text" name="number" value="<%= user.number %>">
                 <div>Zip:</div>
-                <input type="text" name="zip" value="<%= user.zip %>"required>
+                <input type="text" name="zip" value="<%= user.zip %>">
                 <div>State:</div>
                 <select name="state">
                     <option value="AL">Alabama</option>
@@ -82,7 +84,7 @@
                     <option value="WY">Wyoming</option>
                 </select>
                 <div>City:</div>
-                <input type="text" name="city" value="<%= user.city %>"required><br>
+                <input type="text" name="city" value="<%= user.city %>"><br>
                 <input id="addUserButton" type="submit" value="Save changes">
             </div>
         </form>

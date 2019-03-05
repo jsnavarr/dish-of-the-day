@@ -2,7 +2,9 @@
     <div class="allUDO">
         <div>All Dishes</div>
         <% if (user) { %>
-            <a class="addDishesLink" href="/dishes/new"> new dish</a>
+            <% if(user.role === "COOKER"){ %> 
+                <a class="addDishesLink" href="/dishes/new"> new dish</a>
+            <% } %>
         <% } %>
     </div>
     <% if (dishes.length > 0) { %>
@@ -27,8 +29,10 @@
             <div class="quick-nav-links">
                 <a href="/dishes/<%=dish._id %>"> details</a>
                 <% if (user) { %>
-                    <a href="/dishes/<%=dish._id %>/edit"> edit</a>
-                    <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                    <% if(user.role === "COOKER" && user.email == dish.user_id){ %> 
+                        <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                        <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                    <% } %>
                     <a href="/dishes/<%=dish._id %>/orders/new"> Place Order</a>
                 <% } %>                
             </div>

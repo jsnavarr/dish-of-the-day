@@ -17,6 +17,7 @@
             <!-- <div> -->
             <% if (user) { %>
                 <!-- <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a> -->
+                <img id="avatar" src="<%= user.avatar %>" width="50" height="50">
                 <a href="/logout">Log Out</a>
             <% } else { %>
                 <a href="/auth/google">Login with Google</a>

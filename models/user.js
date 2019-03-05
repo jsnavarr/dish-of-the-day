@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
  var userSchema = new Schema ({
     role: {
         type: String,
-        enum: ['COOKER', 'CONSUMER', 'ADMIN']
+        // enum: ['COOKER', 'CONSUMER', 'ADMIN']
     },
     name: {
         type: String,
@@ -40,6 +40,9 @@ var mongoose = require('mongoose');
        default: 'USA'
     },
     googleId: {
+        type: String
+    },
+    avatar: {
         type: String
     }
  }); 

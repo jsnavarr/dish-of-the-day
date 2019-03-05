@@ -7,13 +7,15 @@
             <div>Role:</div>
             <select name="role" disabled>
                 <option value="CONSUMER" 
-                {% if user.role == "CONSUMER" %} 
+                <% if (user.role == "CONSUMER") { %> 
                     selected 
-                {% endif %}>CONSUMER</option>
+                <% } %> 
+                >CONSUMER</option>
                 <option value="COOKER"
-                {% if user.role == "COOKER" %} 
+                <% if (user.role == "COOKER" ) { %> 
                     selected 
-                {% endif %}>COOKER</option>
+                <% } %>
+                >COOKER</option>
             </select>
             <div>Name:</div>
             <input type="text" name="name" value="<%= user.name %>" disabled>
@@ -84,8 +86,10 @@
             <input type="text" name="city" value="<%= user.city %>"disabled><br>
         </div>
         <div class="quick-nav-links">
-            <a href="/users/<%=user._id %>/edit"> edit </a>
-            <a href="/users/<%=user._id %>/delete"> delete </a>
+            <% if(user.email == uemail){ %> 
+                <a href="/users/<%=user._id %>/edit"> edit </a>
+                <a href="/users/<%=user._id %>/delete"> delete </a>
+            <% } %>
             <a href="/users"> all users </a>
         </div>
     </div>

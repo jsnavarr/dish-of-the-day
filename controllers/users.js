@@ -16,7 +16,7 @@ module.exports = {
 function index(req, res, next) {
     message="";
     User.find({}).sort({name: 1}).exec(function(err, users){
-      // console.log(users);
+      console.log(req.user);
       res.render('users/index', {
         users,
         user: req.user,
@@ -48,6 +48,7 @@ function removeUser(req, res, next) {
           if(err){
             console.log('error finding all users');
             message = "error deleting user";
+            res.redirect('/users');
           } else {    
             res.redirect('/users');
           }
@@ -64,28 +65,31 @@ function show(req, res, next) {
       console.log('error trying to find user');
       message = "error trying to find user";
     } else {
-      // console.log(user);
-      res.render('users/show', { title: 'user details', user, message});
+      console.log('req.user.email ' +req.user.email + ' user.email '+user.email);
+      res.render('users/show', { title: 'user details', user, message, uemail: req.user.email});
     } 
   });
 }
 
 function update(req, res, next) {
   message="";
+  // console.log('req.body.role '+req.body.role);
   User.findById(req.params.id, function(err, user) {
-  user.role = req.body.role;
-  user.name = req.body.name;
-  user.email = req.body.email;
-  user.street = req.body.street;
-  user.number = req.body.number;
-  user.zip = req.body.zip;
-  user.state = req.body.state;
-  user.city = req.body.city;
-  user.save(function(err) {
+    if(err) {
+      console.log(err);
+      return res.redirect('/users');
+    }
+    user.role = req.body.role;
+    user.street = req.body.street;
+    user.number = req.body.number;
+    user.zip = req.body.zip;
+    user.state = req.body.state;
+    user.city = req.body.city;
+    console.log(req.body);
+    user.save(function(err) {
     // one way to handle errors
-    if (err) return res.render('users', {message: 'error updating user'});
-    // for now, redirect right back to new.ejs
-    res.redirect('/users');
+    if (err) return res.redirect('/users/'+user._id);
+    res.redirect('/users/'+user._id);
     });
   });
 }
@@ -94,7 +98,7 @@ function editUser(req, res, next) {
   message="";
   console.log('trying to edit user');
   User.findById(req.params.id, function(err, user) {
-    if (err) return res.render('users', {message: 'error updating user'});
+    if (err) return res.redirect('/users');
     res.render('users/edit', {title: 'edit user', user, message});
   });
 }
@@ -116,9 +120,9 @@ function create(req, res, next) {
     console.log(req.body);
     user.save(function(err) {
       // one way to handle errors
-      if (err) return res.render('users/new', {message: 'error creating user'});
+      if (err) return res.redirect('/users');
       // for now, redirect right back to new.ejs
-      res.redirect('/users');
+      res.redirect('/users/'+user._id);
     });
   }
 

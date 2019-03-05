@@ -3,6 +3,7 @@ var Order = require('../models/order');
 var moment = require('moment');
 
 var message = "";
+
 function getDateArray(object, key){
     var a = [];
     if(object){
@@ -36,9 +37,12 @@ function isLoggedIn(req, res, next) {
 function index(req, res) {
     message="";
     Dish.find({}).sort({price: 1}).exec(function(err, dishes){
-        console.log(dishes);
+        // console.log(dishes);
         var av_date_s = getDateArray(dishes, 'availability_start');
         var av_date_e = getDateArray(dishes, 'availability_end');
+        // console.log('user role: '+ req.user+' '+ typeof(req.user));
+        // console.log('user id: '+ req.user._id+' dish.cooker_id'+ dish.cooker_id);
+        //find the user logged-in so it is passed to the page being rendered
         res.render('dishes/index', { dishes, av_date_s, av_date_e, message, user: req.user});
     });
 }
@@ -100,6 +104,7 @@ function show(req, res) {
             var rating = parseInt(Math.floor(sum/count));
             console.log('rating '+rating);
         }
+        console.log('req.user.email: '+req.user.email+ 'dish.cooker_id: '+ dish.user_id);
         res.render('dishes/show', { title: 'dish details', dish, av_date_s, av_date_e, rating, message, user: req.user, message});
         } 
     });
@@ -108,7 +113,7 @@ function show(req, res) {
 function update(req, res, next) {
     message="";
     Dish.findById(req.params.id, function(err, dish) {
-        if (err) return res.render('dishes', {message});
+        if (err) return res.redirect('/dishes');
         dish.picture = req.body.picture;
         dish.description = req.body.description;
         dish.type = req.body.type;
@@ -118,14 +123,15 @@ function update(req, res, next) {
         dish.availability_end_date = req.body.availability_end_date;
         dish.availability_end_time = req.body.availability_end_time;
         dish.totalPortions = req.body.totalPortions;
-        console.log(dish);
+        // console.log(dish);
         //cooker should not be allowed to update dish.cooker
         dish.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('dishes', {message});
+        if (err) return res.redirect('/dishes');
         // for now, redirect right back to new.ejs
-        message='dish updated';
-        res.redirect('/dishes');
+        // message='dish updated';
+        // res.render('dishes', {message, user:req.user});
+        res.redirect('/dishes/'+dish._id);
     });
   });
 }
@@ -134,7 +140,7 @@ function editDish(req, res, next) {
     message="";
     console.log('trying to edit dish');
     Dish.findById(req.params.id, function(err, dish) {
-        if (err) return res.render('dishes', {message});
+        if (err) return res.redirect('/dishes');
         var av_date_s = moment(dish.availability_start).format("YYYY-MM-DD[T]HH:mm:ss");
         var av_date_e = moment(dish.availability_end).format("YYYY-MM-DD[T]HH:mm:ss");
         res.render('dishes/edit', {title: 'edit dish', dish, av_date_s, av_date_e, user: req.user, message});
@@ -156,13 +162,16 @@ function create(req, res, next) {
     console.log(req.body);
     dish.save(function(err) {
         // one way to handle errors
-        if (err) return res.render('dishes/new', {message});
+        if (err) return res.redirect('/dishes/new');
         // for now, redirect right back to new.ejs
-        res.redirect('/dishes');
+        message="dish created";
+        // res.render('dishes', {user:req.user, message});
+        res.redirect('/dishes/'+dish._id);
     });
 }
 
 function newDish(req, res, next) {
     message="";
+    console.log(req.user);
     res.render('dishes/new', {user: req.user, message});
 }

@@ -22,10 +22,12 @@
             <% } %>
             <br>
         </div>
-        <% if (user) { %>
             <div class="quick-nav-links">
-                    <a href="/dishes/<%=dish._id %>/edit"> edit</a>
-                    <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                <% if (user) { %>
+                    <% if(user.role === "COOKER" && user.email == dish.user_id){ %>            
+                        <a href="/dishes/<%=dish._id %>/edit"> edit</a>
+                        <a href="/dishes/<%=dish._id %>/delete"> delete</a>
+                    <% } %>
                     <a href="/dishes/<%=dish._id %>/orders/new"> new Order</a>
                 <a href="/dishes"> all dishes </a>
             </div>

@@ -4,31 +4,33 @@
         <a class="addUserLink" href="/users/new"> new user</a>
     </div>
     <% if (users.length > 0) { %>
-        <% users.forEach(function(user) { %>
+        <% users.forEach(function(u) { %>
             <div class="allUsers">
                 <div class = "user-details">
                     <div>Role:</div>
                     <select name="role" disabled>
                         <option value="CONSUMER" 
-                        {% if user.role == "CONSUMER" %} 
+                        <% if (u.role == "CONSUMER" ) { %> 
                             selected 
-                        {% endif %}>CONSUMER</option>
+                        <% } %>
+                        >CONSUMER</option>
                         <option value="COOKER"
-                        {% if user.role == "COOKER" %} 
+                        <% if (u.role == "COOKER" ) { %> 
                             selected 
-                        {% endif %}>COOKER</option>
+                        <% } %>
+                        >COOKER</option>
                     </select>
                     <div>Name:</div>
-                    <input type="text" name="name" value="<%= user.name %>" disabled>
+                    <input type="text" name="name" value="<%= u.name %>" disabled>
                     <div>e-mail:</div>
-                    <input type="mail" name="email" value="<%= user.email %>"disabled>
+                    <input type="mail" name="email" value="<%= u.email %>"disabled>
                     <div>Address:</div>
                     <div>Street:</div>
-                    <input type="text" name="street" value="<%= user.street %>"disabled>
+                    <input type="text" name="street" value="<%= u.street %>"disabled>
                     <div>Number:</div>
-                    <input type="text" name="number" value="<%= user.number %>"disabled>
+                    <input type="text" name="number" value="<%= u.number %>"disabled>
                     <div>Zip:</div>
-                    <input type="text" name="zip" value="<%= user.zip %>"disabled>
+                    <input type="text" name="zip" value="<%= u.zip %>"disabled>
                     <div>State:</div>
                     <select name="state" disabled>
                         <option value="AL">Alabama</option>
@@ -84,12 +86,14 @@
                         <option value="WY">Wyoming</option>
                     </select>
                     <div>City:</div>
-                    <input type="text" name="city" value="<%= user.city %>"disabled><br>
+                    <input type="text" name="city" value="<%= u.city %>"disabled><br>
                 </div>
                 <div class="quick-nav-links">
-                    <a href="/users/<%=user._id %>"> details </a>
-                    <a href="/users/<%=user._id %>/edit"> edit </a>
-                    <a href="/users/<%=user._id %>/delete"> delete </a>
+                    <a href="/users/<%=u._id %>"> details </a>
+                    <% if(u.email == user.email){ %> 
+                        <a href="/users/<%=u._id %>/edit"> edit </a>
+                        <a href="/users/<%=u._id %>/delete"> delete </a>
+                    <% } %>
                 </div>
         </div>
         <% }); %>

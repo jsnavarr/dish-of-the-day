@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
     <div class="allUDO">
         <div>New User</div>
-    </div>     
+    </div>  
     <div class="allUsers">
         <form action="/users" method="POST">
             <div class = "user-details">
@@ -9,7 +9,7 @@
                 <select name="role">
                     <option value="CONSUMER">CONSUMER</option>
                     <option value="COOKER">COOKER</option>
-                </select>   
+                </select>
                 <div>Name:</div>
                 <input type="text" name="name" value="<%= name %>"required>
                 <div>e-mail:</div>

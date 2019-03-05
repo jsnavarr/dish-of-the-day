@@ -7,7 +7,7 @@
         <form action="/orders/<%= order._id %>" method="POST">
             <div class="order-details">
                 <div>Quantity:</div>
-                <input type="number" name="quantity" value="<%= order.quantity %>" >
+                <input type="number" name="quantity" value="<%= order.quantity %>" required >
                 <div>Pickup time:</div>
                 <input type="datetime-local" name="pickup_time" value="<%= pickup_time %>" >
                 <div>Allergies:</div>
