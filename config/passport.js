@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
           name: profile.displayName,
           email: profile.emails[0].value,
           googleId: profile.id,
-          avatar: avatar.substring(0, avatar.length - 6)
+          avatar: avatar.substring(0, avatar.length - 6),
         });
         newUser.save(function(err) {
           if (err) return cb(err);

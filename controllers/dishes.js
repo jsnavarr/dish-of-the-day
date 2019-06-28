@@ -104,7 +104,7 @@ function show(req, res) {
             var rating = parseInt(Math.floor(sum/count));
             console.log('rating '+rating);
         }
-        console.log('req.user.email: '+req.user.email+ 'dish.cooker_id: '+ dish.user_id);
+        // console.log('req.user.email: '+req.user.email+ 'dish.cooker_id: '+ dish.cooker_id);
         res.render('dishes/show', { title: 'dish details', dish, av_date_s, av_date_e, rating, message, user: req.user, message});
         } 
     });

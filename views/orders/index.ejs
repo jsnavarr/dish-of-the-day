@@ -12,7 +12,7 @@
                     </div>
                     <div class="quick-nav-links">
                         <a href="/orders/<%=o._id %>"> details</a>
-                        <% if(user.email == order.user_id){ %> 
+                        <% if(user.email == o.user_id){ %> 
                             <a href="/orders/<%=o._id %>/edit"> edit</a>
                             <a href="/orders/<%=o._id %>/delete"> delete</a>
                         <% } %>
